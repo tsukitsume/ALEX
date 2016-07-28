@@ -1,0 +1,29 @@
+<ons-page ng-controller="LoginController">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
+                <ons-icon icon="ion-navicon"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">ログイン</div>
+    </ons-toolbar>
+    
+    <ons-list modifier="inset" style="margin-top: 20px;">
+        <ons-list-item>
+    		ユーザー名
+            <input type="text" class="text-input--transparent" placeholder="username" style="width: 100%" id="InputName" ng-model="data.input_name" />
+        </ons-list-item>
+        <ons-list-item>
+			パスワード
+            <input type="password" class="text-input--transparent" placeholder="password" style="width: 100%" id="InputPassword" ng-model="data.input_email" />
+        </ons-list-item>
+        
+        <div style="padding: 10px 9px">
+            <ons-button modifier="large" ng-click="doLogin()">ログイン</ons-button>
+        </div>
+    </ons-list>
+    
+    <!-- signup ヘのリンク -->
+    <div id="hoge"></div>
+
+</ons-page>

@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+	<script src="components/loader.js"></script>
+	<link rel="stylesheet" href="components/loader.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		var app = ons.bootstrap('myApp', []);
+		var menus = [
+			{
+				page:       'shop.html',
+				name:       'Shop Information',
+				jpname:     '会社情報',
+				background: 'Unknown-1.jpeg',
+			},
+			{
+				page:       'market.html',
+				name:       'Precious Metal Market',
+				jpname:     '貴金属相場',
+				background: 'IMG_2012.JPG',
+			},
+			{
+				page:       'history.html',
+				name:       'History',
+				jpname:     '歴史',
+				background: 'A-1006.jpg',
+			},
+			{
+				page:       'news.html',
+				name:       'Good News',
+				jpname:     '行事予定',
+				background: 'IMG_0606.JPG',
+			},
+			{
+				page:       'product.html',
+				name:       'New Arrival',
+				jpname:     '商品',
+				background: 'Unknown.jpeg',
+			},
+			{
+				page:       'signup.html',
+				name:       'Be A Member',
+				jpname:     '会員登録',
+				background: 'w-102.jpg',
+			},
+			{
+				page:       'mycard.html',
+				name:       'My Card',
+				jpname:     'カード',
+				background: 'images.jpeg',
+			},
+		];
+		
+		const AJAX_BASE_URL = "http://tsukitsume.com/alex/";
+		
+		const AJAX_SIGNUP    = AJAX_BASE_URL + "signup";
+		const AJAX_LOGIN     = AJAX_BASE_URL + "login";
+		const AJAX_CHANGE_PW = AJAX_BASE_URL + "change_pw";
+		const AJAX_MARKET    = AJAX_BASE_URL + "market";
+		const AJAX_NEWS      = AJAX_BASE_URL + "news";
+		const AJAX_PRODUCT   = AJAX_BASE_URL + "product";
+		
+		const IMG_DIR        = AJAX_BASE_URL + "images";
+		
+		var shop_info = {
+			name: '株式会社アレックス (ALEX CO. Ltd)',
+			zip: '〒604-8062',
+			address: '京都府京都市中京区蛸薬師通麩屋町東入ル蛸屋町153',
+			tel: '075-221-7777',
+			telnum: '0752217777',
+			fax: '075-211-0889',
+			lat: '35.006096',
+			lng: '135.7636673',
+			img: 'images/shop.jpg',
+		};
+		
+		
+		app.factory('SharedData', function() {
+			var sharedData = {};
+			sharedData.data = {};
+			sharedData.userData = {};
+			
+			var userData = {};
+			
+			// データを設定
+			sharedData.set = function(data)
+			{
+				sharedData.data = data;
+			};
+			
+			sharedData.get = function()
+			{
+				return sharedData.data;
+			};
+			
+			sharedData.setUser = function(data)
+			{
+				console.log('setUser');
+				console.log(data);
+				sharedData.userData.name = data.name;
+				sharedData.userData.email = data.email;
+			};
+			sharedData.getUser = function()
+			{
+				return sharedData.userData;
+			};
+			return sharedData;
+		});
+		
+		app.controller('TopController', function($scope, $http, SharedData)
+		{
+			$scope.menuMain = menus;
+
+			var menu_sub = menus.slice(0);
+			menu_sub.push( menu_sub.shift() );
+			$scope.menuSub  = menu_sub;
+			
+			ons.ready(function()
+			{
+				const DELAY = 100;
+				const STOP_DURATION = 200;
+
+				const LI_HEIGHT = 40;
+				const LI_HALF   = LI_HEIGHT/2;
+				const LI_COUNT  = 7;
+				const UL_HEIGHT = LI_HEIGHT * LI_COUNT;
+				
+				$('#main_image').height($('#main_content').height() - LI_HEIGHT*7);
+				$('#main_image ul').height($('#main_image') * LI_COUNT);
+				$('#main_image ul li').height($('#main_image').height());
+				
+				var IMAGE_HEIGHT = $('#main_image').height();
+				var PER_FOR_IMAGE = IMAGE_HEIGHT/LI_HEIGHT;
+
+/*
+				$('#menu_sub ul li').on('click', function(e)
+				{
+					$('#menu_sub').stop(false, true).animate({scrollTop: $('#menu_sub').scrollTop() + $(this).offset().top - $('#menu_sub').offset().top + LI_HEIGHT}, 200);
+					$('#menu_main').stop(false, true).animate({scrollTop: $('#menu_sub').scrollTop() + $(this).offset().top - $('#menu_sub').offset().top + LI_HEIGHT}, 200);
+				});
+*/
+				var touchY = 0;
+				var slideY = 0;
+
+				$('#menu_sub').on(
+				{
+					/* フリック開始時 */
+					'touchstart': function(e)
+					{
+						touchY = event.changedTouches[0].pageY;
+
+						slideY = $('#menu_sub').scrollTop();
+					},
+					/* フリック中 */
+					'touchmove': function(e)
+					{
+						e.preventDefault();
+						slideY = slideY + (touchY - event.changedTouches[0].pageY );
+						$('#menu_sub').scrollTop(slideY);
+						$('#menu_main').scrollTop(slideY);
+						console.log(slideY*PER_FOR_IMAGE)
+						$('#main_image').scrollTop(slideY*PER_FOR_IMAGE);
+						touchY = event.changedTouches[0].pageY;
+
+						// console.log($(this).scrollTop() + ":" + UL_HEIGHT*2);
+						
+						if ($('#menu_sub').scrollTop() > UL_HEIGHT*2)
+						{
+						///	console.log("(this).scrollTop() > UL_HEIGHT*2");
+							// $('#menu_main ul:last-child').after($('#menu_main ul:first-child'));
+							// $('#menu_sub ul:last-child').after($('#menu_sub ul:first-child'));
+							
+						//	console.log($('#menu_main').scrollTop() - UL_HEIGHT);
+							console.log($('#menu_sub').scrollTop() - UL_HEIGHT)
+							slideY = $('#menu_sub').scrollTop() - UL_HEIGHT;
+							$('#menu_main').scrollTop(slideY);
+							$('#menu_sub').scrollTop(slideY);
+						}
+						else if ($('#menu_sub').scrollTop() < UL_HEIGHT)
+						{
+							// $('#menu_main ul:first-child').before($('#menu_main ul:last-child'));
+							// $('#menu_sub ul:first-child').before($('#menu_sub ul:last-child'));
+							slideY = $('#menu_sub').scrollTop() + UL_HEIGHT;
+							$('#menu_main').scrollTop(slideY);
+							$('#menu_sub').scrollTop(slideY);
+						}
+
+					},
+					/* フリック終了 */
+					'touchend': function(e)
+					{
+						console.log($('#menu_sub ul').length);
+						var sc_top = $('#menu_sub').scrollTop();
+						var ssc = sc_top%LI_HEIGHT;
+
+						if (ssc > LI_HALF)
+						{
+							$('#menu_sub').stop(false, true).animate({scrollTop: sc_top + (LI_HEIGHT - ssc)}, STOP_DURATION);
+							$('#menu_main').stop(false, true).animate({scrollTop: sc_top + (LI_HEIGHT - ssc)}, STOP_DURATION);
+							$('#main_image').stop(false, true).animate({scrollTop: (sc_top + (LI_HEIGHT - ssc))*PER_FOR_IMAGE}, STOP_DURATION);
+						}
+						else
+						{
+							$('#menu_sub').stop(false, true).animate({scrollTop: sc_top - ssc}, STOP_DURATION);
+							$('#menu_main').stop(false, true).animate({scrollTop: sc_top - ssc}, STOP_DURATION);
+							$('#main_image').stop(false, true).animate({scrollTop: (sc_top - ssc)*PER_FOR_IMAGE}, STOP_DURATION);
+						}
+					}
+				});
+
+				/* init */
+				console.log('init');
+				console.log($('#menu_main'));
+
+
+				/** 戻ってきた時に clone() きかない
+				function init()
+				{
+					$('#menu_sub ul li:last-child').after($('#menu_sub ul li:first-child'));
+					$('#menu_main').append($('#menu_main ul').clone());
+					$('#menu_main').prepend($('#menu_main ul').clone());
+
+					$('#menu_sub').append($('#menu_sub ul').clone());
+					$('#menu_sub').prepend($('#menu_sub ul').clone());
+
+					$('#menu_main').scrollTop(UL_HEIGHT);
+					$('#menu_sub').scrollTop(UL_HEIGHT);	
+				}
+				*/
+				// init
+				$('#menu_main').scrollTop(UL_HEIGHT);
+				$('#menu_sub').scrollTop(UL_HEIGHT);
+			});
+		});
+		
+		app.controller('MenuController', function($scope, $http, SharedData) {
+			$scope.menuList = menus;
+			/*
+			$http.get('http://tsukitsume.com/alex/news.php').then(function (response) {
+				console.log(response);
+				$scope.dataList = response.data;
+			});
+			$scope.showDetailPage = function(data) {
+				// 共有サービスにデータを登録
+				console.log(SharedData);
+				SharedData.set(data);
+				console.log('set ok');
+				// detail.html を表示
+				app.slidingMenu.setMainPage('detail.html', { closeMenu: true });
+				// ons.slidingMenu.setMainPage('detail.html', {closeMenu: true});
+			};
+			*/
+		});
+		app.controller('ShopController', function($scope, $http) {
+			$scope.shop_info = shop_info;
+		});
+		
+		/**
+		 * News
+		 */
+		app.controller('NewsListController', function($scope, $http, SharedData) {
+
+			$scope.dataList = [];
+			$scope.showDetailPage = function(data) {
+				// 共有サービスにデータを登録
+				// console.log(data);
+				SharedData.set(data);
+				// console.log('set ok');
+				// detail.html を表示
+				navi.pushPage('detail.html');
+			};
+			
+			
+			function readItems()
+			{
+				$http.get(AJAX_NEWS).then(function (response) {
+					// console.log(response.data);
+					// $scope.dataList = response.data;
+					for (var key in response.data)
+					{
+							$scope.dataList.push(response.data[key]);
+					}
+				});
+			}
+
+
+			$scope.MyDelegate = {
+				createItemContent: function(index, oldContent) {
+					console.log(index + "番目の要素を作成します");
+				},
+				configureItemScope: function(index, itemScope)
+				{
+					console.log(index);
+					if ($scope.dataList[index])
+					{
+						itemScope.data = $scope.dataList[index];
+					}
+				},
+
+				calculateItemHeight: function(index) {
+					return 40;
+				},
+				countItems: function() {
+					return $scope.dataList.length;
+				},
+				destroyItemContent: function(index, element) {
+					console.log("要素 No." + index + "を削除します");
+				  }
+			};
+
+			readItems();
+
+			/*
+			ons.ready(function()
+			{
+				console.log($("#news_list_ul"))
+				$("#news_list_ul").on("scroll", function(){
+					console.log("change : "+$("#news_list_ul").scrollTop());
+					if(scroll_test.scrollHeight <= scroll_test.clientHeight + scroll_test.scrollTop){console.log("scroll max");}
+					
+				})
+			});
+			*/
+
+		});
+		app.controller('NewsController', function($scope, SharedData) {
+			console.log('detail come');
+			$scope.data = SharedData.get();
+		});
+		
+		/**
+		 * Product
+		 */
+		app.controller('ProductListController', function($scope, $http, SharedData) {
+			$http.get(AJAX_PRODUCT).then(function (response) {
+				console.log(response.data);
+				$scope.dataList = response.data;
+			});
+			$scope.showDetailPage = function(data) {
+				// 共有サービスにデータを登録
+				console.log(data);
+				SharedData.set(data);
+				console.log('set ok');
+				// detail.html を表示
+				navi.pushPage('detail.html');
+			};
+		});
+		app.controller('ProductController', function($scope, SharedData) {
+			console.log('product detail come');
+			$scope.data = SharedData.get();
+			$scope.data.img = IMG_DIR + $scope.data.img;
+						console.log($scope.data.img);
+		});
+		app.controller('MarketListController', function($scope, $http, SharedData) {
+			$http.get(AJAX_MARKET).then(function (response) {
+				console.log(response.data);
+				$scope.dataList = response.data;
+			});
+			$scope.showDetailPage = function(data) {
+				// 共有サービスにデータを登録
+				console.log(data);
+				SharedData.set(data);
+				console.log('set ok');
+				// detail.html を表示
+				navi.pushPage('detail.html');
+			};
+		});
+		app.controller('MarketController', function($scope, SharedData) {
+			console.log('product detail come');
+			$scope.data = SharedData.get();
+		});
+		app.controller('HistoryListController', function($scope, $http, SharedData) {
+			$http.get(AJAX_HISTORY).then(function (response) {
+				console.log(response.data);
+				$scope.dataList = response.data;
+			});
+			$scope.showDetailPage = function(data) {
+				// 共有サービスにデータを登録
+				console.log(data);
+				SharedData.set(data);
+				console.log('set ok');
+				// detail.html を表示
+				navi.pushPage('detail.html');
+			};
+		});
+		app.controller('HistoryController', function($scope, SharedData) {
+			console.log('product detail come');
+			$scope.data = SharedData.get();
+		});
+		
+		app.controller('SignupController', function($scope, $http, SharedData) {
+			console.log('signup page');
+			
+						
+			ons.ready(function () {
+				$('#hoge').text('fuga');
+			});
+			
+			$scope.doSignUp = function ()
+			{
+				var parameter = {};
+				parameter.name = $("#InputName").val();
+				parameter.email = $('#InputEmail').val();
+				// console.log(parameter);
+				$.post(AJAX_SIGNUP, parameter)
+				.success(function (data, status) {
+					console.log('success');
+					console.log(data);
+					if (data)
+					{
+						console.log('email send');
+						SharedData.setUser({
+							name:  data.name,
+							email: data.email,
+						});
+						app.slidingMenu.setMainPage('mypage.html', {closeMenu: true});
+					}
+					else
+					{
+						console.log('email failed');
+					}
+				}).error(function (data, status) {
+					console.log(data);
+				});
+			};
+		});
+		app.controller('MypageController', function($scope, $http, SharedData) {
+			console.log('MypageController page');
+			userData = SharedData.getUser();
+			console.log(userData);
+
+		});
+		
+		app.controller('LoginController', function($scope, $http, SharedData) {
+			$scope.doLogin = function ()
+			{
+				var parameter = {};
+				parameter.name = $("#InputName").val();
+				parameter.email = $('#InputEmail').val();
+				// console.log(parameter);
+				$.post(AJAX_SIGNUP, parameter)
+				.success(function (data, status)
+				{
+					console.log('success');
+					console.log(data);
+					if (data)
+					{
+						SharedData.setUser({
+							name:  data.name,
+							email: data.email,
+						});
+						app.slidingMenu.setMainPage('top.html', {closeMenu: true});
+					}
+					else
+					{
+						console.log('email failed');
+					}
+				}).error(function (data, status) {
+					console.log(data);
+				});
+			};
+		});
+		
+	</script>
+</head>
+
+<body>
+	<ons-sliding-menu
+		var="app.slidingMenu"
+		main-page="top.html"
+		menu-page="menu.html"
+		side="left"
+		type="reveal"
+		max-side-distance="200px"
+	>
+	</ons-sliding-menu>
+</body>
+</html>
+

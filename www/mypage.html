@@ -1,0 +1,23 @@
+<ons-page ng-controller="MypageController">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
+                <ons-icon icon="ion-navicon"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">マイカード</div>
+    </ons-toolbar>
+    
+    <ons-list modifier="inset" style="margin-top: 20px;">
+        <ons-list-header class="title">マイカード</ons-list-header>
+        <ons-list-item>
+        	お名前: {{data.name}}
+        </ons-list-item>
+        <ons-list-item>
+			メースアドレス: {{data.email}}
+        </ons-list-item>
+
+    </ons-list>
+
+<div id="hoge">fff</div>
+</ons-page>

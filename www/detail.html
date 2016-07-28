@@ -1,0 +1,26 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
+                <ons-icon icon="ion-navicon"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">{{data.name}}</div>
+    </ons-toolbar>
+    
+    <ons-list modifier="inset">
+        <ons-list-item style="text-align: center;">
+            <img src="img/{{data.id}}.png" style="margin-top: 10px;" width="80%">
+            <br>
+            <span class="label">{{data.date}}</span>
+        </ons-list-item>
+    </ons-list>
+    
+    <ons-list modifier="inset" style="margin-top: 20px;">
+        <ons-list-header class="title">{{data.name}}</ons-list-header>
+        <ons-list-item class="desc">
+            {{data.content}}
+        </ons-list-item>
+    </ons-list>
+
+</ons-page>
