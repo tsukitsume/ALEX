@@ -17,35 +17,8 @@
 		</div>
 	</ons-toolbar>
 
-	<ul>
-		<li ng-repeat="data in menuMain"
-			ng-click="navi.pushPage(data.page)"modifier="tappable"
-			style="margin-bottom: 40px;"
-			">
-				{{data.name}}
-				<span class="jp">{{data.jpname}}</span>
-			</li>
-		</ul>
-
-<!--
 		<div id="main_content">
 			<div id="main_image">
-				<ul>
-					<li ng-repeat="data in menuMain"
-					ng-click="navi.pushPage(data.page)"modifier="tappable" 
-						style="background-image: url(images/top/{{data.background}});">
-						{{data.name}}
-						<span class="jp">{{data.jpname}}</span>
-					</li>
-				</ul>
-				<ul>
-					<li ng-repeat="data in menuMain"
-					ng-click="navi.pushPage(data.page)"modifier="tappable" 
-						style="background-image: url(images/top/{{data.background}});">
-						{{data.name}}
-						<span class="jp">{{data.jpname}}</span>
-					</li>
-				</ul>
 				<ul>
 					<li ng-repeat="data in menuMain"
 					ng-click="navi.pushPage(data.page)"modifier="tappable" 
@@ -64,37 +37,13 @@
 						{{data.name}}
 					</li>
 				</ul>
-				<ul>
-					<li ng-repeat="data in menuMain"
-					ng-click="navi.pushPage(data.page)"modifier="tappable" >
-						{{data.name}}
-					</li>
-				</ul>
-				<ul>
-					<li ng-repeat="data in menuMain"
-					ng-click="navi.pushPage(data.page)"modifier="tappable" >
-						{{data.name}}
-					</li>
-				</ul>
 			</div>
 			<div id="menu_sub">
 				<ul>
-					<li ng-repeat="data in menuSub">
+					<li ng-repeat="data in menuMain">
 						{{data.name}}
 					</li>
-				</ul>
-				<ul>
-					<li ng-repeat="data in menuSub">
-						{{data.name}}
-					</li>
-				</ul>
-				<ul>
-					<li ng-repeat="data in menuSub">
-						{{data.name}}
-					</li>
-				</ul>
-				<ul>
-					<li ng-repeat="data in menuSub">
+					<li ng-repeat="data in menuMain">
 						{{data.name}}
 					</li>
 				</ul>
@@ -102,5 +51,19 @@
 		</div>
 
 	</ul>
--->
 </ons-page>
+
+
+	<!--
+	<ul>
+		<li ng-repeat="data in menuMain"
+			ng-click="navi.pushPage(data.page)"
+   			modifier="tappable"
+			style="margin-bottom: 40px;"
+			>
+				{{data.name}}
+				<span class="jp">{{data.jpname}}</span>
+			</li>
+		</ul>
+	-->
+
