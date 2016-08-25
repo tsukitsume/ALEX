@@ -6,20 +6,218 @@ li height 40px;
 	font-family: 'Baskeville';
 	src: url('fonts/OpenBaskeville-0.0.75.ttf') format('truetype');
 }
-
-.navigation-bar
+*
 {
-	background-color: red;
+	font-family: 'OpenBaskeville', "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+	padding:0;
+	margin: 0;
 }
 
+h1
+{
+	font-size: 120%;
+	margin-bottom: 1em;
+}
+h2
+{
+	font-size: 110%;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+h3
+{
+	font-weight: bold;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+dl {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: #e7e7e7 none repeat scroll 0 0;
+	border-color: -moz-use-text-color #666 #666;
+	border-image: none;
+	border-style: none solid solid;
+	border-width: medium 1px 1px;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	padding: 0;
+}
+dt, dd {
+	margin: 0;
+	padding: 0;
+}
+dt,
+dd
+ {
+	min-height: 2em;
+	padding: 0.5em;
+}
+dt
+{
+	border-top: 1px solid #666;
+	box-sizing: border-box;
+	clear: left;
+	float: left;
+	font-weight: 700;
+}
+dd
+{
+	background: #fff none repeat scroll 0 0;
+	border-left: 1px solid #666;
+	border-top: 1px solid #666;
+	overflow: hidden;
+}
+/* default */
+dt
+{
+	width: 6em;
+}
+dd
+{
+	margin-left: 6em;
+}
+
+.padding-normal
+{
+	padding: 10px 9px;
+}
+.navigation-bar
+{
+	background: -webkit-linear-gradient(#ff0f00 0%,#c20d00 100%);
+	background: linear-gradient(#ff0f00 0%,#c20d00 100%);
+}
+.error
+{
+	color: #DC143C;
+	font-size: 85%;
+	display: block;
+	margin: 0.5em;
+}
+.error:before
+{
+	content: "※";
+}
+.button
+{
+	background: -webkit-linear-gradient(#ff0f00 0%,#c20d00 100%);
+	background: linear-gradient(#ff0f00 0%,#c20d00 100%);
+	font-weight: bold;
+}
+.button.icon
+{
+	color: #1f1f21;
+	height: 60px;
+	width: 60px;
+	padding: 0;
+	border-radius: 4px;
+}
+.button.icon img
+{
+	display: block;
+	width: 32px;
+	margin: 0 auto;
+}
+.button.icon span
+{
+	color: #fff;
+	width: 100%;
+	display:block;
+	text-align: center;
+	text-shadow: 0 4px 4xp 0 #000;
+}
+.disabled,
+.inactive
+{
+	background: LightGray;
+}
+.toolbar-button, .toolbar-button--outline, .toolbar-button--quiet
+{
+	color: white;
+}
+ul.button_group.three
+{
+	width: 100%;
+	margin: 1em auto 2em;
+	overflow: hidden;
+}
+.button_group.three li
+{
+	display: block;
+	float: left;
+	width: 33%; 
+	list-style: none;
+	text-align: center;
+	position: relative;
+}
+.button_group.three li a
+{
+	display block;
+	margin: 15px auto;
+	
+}
+.button_group .budge
+{
+	position: absolute;
+	background: rgba(255,0,0,0.7);
+	border: 2px solid #fff;
+	border-radius: 2em;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+	font-weight: bold;
+	color: #fff;
+	padding: 0.2em;
+	z-index: 99;
+	right: 0;
+	top: 0;
+	min-width: 1.5em;
+}
+
+.col {
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: hidden;
+  padding: 4px;
+  color: #999;
+}
+
+.page__content {
+  background-color: #f6f6f6;
+  padding: 8px;
+}
+
+h3 {
+  color: #666;
+  font-size: 17px;
+}
+
+#list_end
+{
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	overflow: hidden;
+}
+#list_end .load_more .swipe
+{
+	font-size: 80%;
+	color: red;
+	width: 100%;
+}
 /*
  * top
  */
+ #top_menu
+ {
+ 	background: green;
+ 	height: 200px;
+ }
 #main_image,
 #menu_main,
 #menu_sub
 {
-	font-family: 'OpenBaskeville';
+	font-family: 'OpenBaskeville', "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
 	padding:0;
 	margin: 0;
 	list-style: none;
@@ -120,4 +318,80 @@ li height 40px;
 	height: auto;
 }
 
+/*
+ * market
+ */
+.market dt
+{
+	width: 7em;
+}
+.market dd
+{
+	margin-left: 7em;
+}
+.market h2
+{
+	border-left: solid 6px #000;
+	padding-left: 10px;
+	line-height: 1.0;
+}
+.market h2.gold { border-color: #FFD700; }
+.market h2.platinum { border-color: #e5e4e2; }
+.market h2.silver { border-color: #c0c0c0; }
 
+/*
+ * product
+ */
+.product_list
+{
+	overflow: hidden;
+}
+.product_list .thumbnail
+{
+	margin-top: 1em;
+	max-width: 20%;
+	border: 1px solid #cecece;
+	display: block;
+	float: left;
+}
+
+.product_list h3,
+.product_list .price
+{
+	box-sizing: content-box;
+	clear: right;
+	float: right;
+	width: 65%;
+	margin: 20px;
+	line-height: 1.5;
+}
+.product_list h3
+{
+	margin-bottom: 0;
+}
+.product_list .price_primary,
+.product .price_primary,
+.product .price_secondary
+{
+	text-align: right;
+	margin-bottom: 0.5em;
+}
+.product_list .price_primary,
+.product .price_primary
+{
+	font-weight: bold;
+	color: red;
+}
+.product .price_secondary
+{
+	font-size: 85%;
+}
+.product
+{
+	width: 100%;
+	overflow: hidden;
+}
+.product img
+{
+	max-width: 100%;
+}

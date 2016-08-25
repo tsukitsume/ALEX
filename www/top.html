@@ -1,34 +1,38 @@
-<ons-navigator>
-	<ons-page  ng-controller="TopController">
-		<ons-toolbar>
-		<!--
-			<div class="left">
-				<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-					<ons-icon icon="ion-navicon"></ons-icon>
-				</ons-toolbar-button>
-			</div>
-			-->
-			<div class="left">
-				<ons-toolbar-button ng-click="app.slidingMenu.setMainPage('signup.html', {closeMenu:true})">
-					サインアップ
-				</ons-toolbar-button>
-			</div>
-			<div class="right">
-				<ons-toolbar-button ng-click="app.slidingMenu.setMainPage('login.html', {closeMenu:true})">
-					ログイン
-				</ons-toolbar-button>
-			</div>
-			<div class="center">
-				<ons-icon icon="ion-leaf" style="color:#396"></ons-icon>
-				ALEX
-			</div>
-	
-		</ons-toolbar>
+<ons-page ng-controller="TopController" id="top.html">
+
+	<ons-toolbar>
+		<div class="right">
+			<ons-toolbar-button ng-if="!loggedin"
+				ng-click="navi.pushPage('login.html')">
+				ログイン
+			</ons-toolbar-button>
+			<ons-toolbar-button ng-if="loggedin"
+				ng-click="navi.pushPage('mypage.html')">
+				MyCard
+			</ons-toolbar-button>
+		</div>
+		<div class="center">
+			<!-- TODO image -->
+			ALEX
+		</div>
+	</ons-toolbar>
+
+	<ul>
+		<li ng-repeat="data in menuMain"
+			ng-click="navi.pushPage(data.page)"modifier="tappable"
+			style="margin-bottom: 40px;"
+			">
+				{{data.name}}
+				<span class="jp">{{data.jpname}}</span>
+			</li>
+		</ul>
+
+<!--
 		<div id="main_content">
 			<div id="main_image">
 				<ul>
 					<li ng-repeat="data in menuMain"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})"modifier="tappable" 
+					ng-click="navi.pushPage(data.page)"modifier="tappable" 
 						style="background-image: url(images/top/{{data.background}});">
 						{{data.name}}
 						<span class="jp">{{data.jpname}}</span>
@@ -36,7 +40,7 @@
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuMain"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})"modifier="tappable" 
+					ng-click="navi.pushPage(data.page)"modifier="tappable" 
 						style="background-image: url(images/top/{{data.background}});">
 						{{data.name}}
 						<span class="jp">{{data.jpname}}</span>
@@ -44,7 +48,7 @@
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuMain"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})"modifier="tappable" 
+					ng-click="navi.pushPage(data.page)"modifier="tappable" 
 						style="background-image: url(images/top/{{data.background}});">
 						{{data.name}}
 						<span class="jp">{{data.jpname}}</span>
@@ -56,19 +60,19 @@
 			<div id="menu_main">
 				<ul>
 					<li ng-repeat="data in menuMain"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})"modifier="tappable" >
+					ng-click="navi.pushPage(data.page)"modifier="tappable" >
 						{{data.name}}
 					</li>
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuMain"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})"modifier="tappable" >
+					ng-click="navi.pushPage(data.page)"modifier="tappable" >
 						{{data.name}}
 					</li>
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuMain"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})"modifier="tappable" >
+					ng-click="navi.pushPage(data.page)"modifier="tappable" >
 						{{data.name}}
 					</li>
 				</ul>
@@ -76,47 +80,27 @@
 			<div id="menu_sub">
 				<ul>
 					<li ng-repeat="data in menuSub">
-						<span class="name">{{data.name}}</span>
+						{{data.name}}
 					</li>
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuSub">
-						<span class="name">{{data.name}}</span>
+						{{data.name}}
 					</li>
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuSub">
-						<span class="name">{{data.name}}</span>
+						{{data.name}}
 					</li>
 				</ul>
 				<ul>
 					<li ng-repeat="data in menuSub">
-						<span class="name">{{data.name}}</span>
+						{{data.name}}
 					</li>
 				</ul>
 			</div>
 		</div>
 
-			<!--
-			<ons-carousel id="top_menu" item-height="30" direction="vertical" auto-scroll-ratio="0.1"
-				swipeable auto-scroll="true" overscrollable var="topMenu">
-
-				<ons-carousel-item class="top_menu_item" ng-repeat="data in dataList"
-					modifier="tappable" class="list__item__line-height"
-					ng-click="app.slidingMenu.setMainPage(data.page, {closeMenu:true})">
-					<span style="margin-left: 10px;">
-							{{data.name}}
-					</span>
-				</ons-carousel-item>
-				<ons-carousel-cover id="carousel_cover">
-					<div id="list_back"></div>
-					<ul id="sub_list">
-						<li ng-repeat="data in dataList">{{data.name}}</li>
-					</ul>
-				</ons-carousel-cover>
-			</ons-carousel>
-			-->
-		</div>
-	</ons-page>
-</ons-navigator>
-
+	</ul>
+-->
+</ons-page>

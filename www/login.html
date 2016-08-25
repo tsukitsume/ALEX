@@ -1,29 +1,67 @@
-<ons-page ng-controller="LoginController">
-    <ons-toolbar>
-        <div class="left">
-            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-                <ons-icon icon="ion-navicon"></ons-icon>
-            </ons-toolbar-button>
-        </div>
-        <div class="center">ログイン</div>
-    </ons-toolbar>
-    
-    <ons-list modifier="inset" style="margin-top: 20px;">
-        <ons-list-item>
-    		ユーザー名
-            <input type="text" class="text-input--transparent" placeholder="username" style="width: 100%" id="InputName" ng-model="data.input_name" />
-        </ons-list-item>
-        <ons-list-item>
-			パスワード
-            <input type="password" class="text-input--transparent" placeholder="password" style="width: 100%" id="InputPassword" ng-model="data.input_email" />
-        </ons-list-item>
-        
-        <div style="padding: 10px 9px">
-            <ons-button modifier="large" ng-click="doLogin()">ログイン</ons-button>
-        </div>
-    </ons-list>
-    
-    <!-- signup ヘのリンク -->
-    <div id="hoge"></div>
+<ons-page ng-controller="LoginController as login">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">ログイン</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<form name="myForm" novalidate>
+		<ons-list modifier="inset" style="margin-top: 20px;">
+			<ons-list-item>
+				会員番号
+				<input ng-model="login.id"
+					name="id"
+					type="text" class="text-input"
+					placeholder="username" style="width: 100%" id="InputName" ng-required="true" />
+			</ons-list-item>
+			<ons-list-item>
+				パスワード
+				<input ng-model="login.password" ng-required="true"
+					name="password"
+					type="password" class="text-input"
+					placeholder="password" style="width: 100%" id="InputPassword" />
+			</ons-list-item>
+			
+			<div>
+				<span class="error" ng-show="myForm.id.$error.required">会員番号を入力してください</span>
+				<span class="error" ng-show="myForm.password.$error.required">パスワードを入力してください</span>
+			</div>
+			
+			<div style="padding: 10px 9px">
+				<ons-button modifier="large" ng-click="doLogin(login)" ng-disabled="myForm.$invalid">ログイン</ons-button>
+			</div>
+		</ons-list>
+
+	</form>
+
+	<div class="padding-normal">
+		<p>
+			会員登録がお済みでない方は、下記よりお願いします。
+		</p>
+		<ons-button ng-click="navi.pushPage('signup.html')" modifier="large">
+			会員登録
+		</ons-button>
+	</div>
+
+	<ons-list modifier="inset">
+		<ons-list-header class="title">会員特典</ons-list-header>
+		<ons-list-item ng-bind-html="privilege" class="privilege">
+		</ons-list-item>
+		<ons-list-item ng-bind-html="point_description" class="point_description">
+		</ons-list-item>
+	</ons-list>
+	
+	<div class="padding-normal">
+		<ons-button ng-click="navi.pushPage('signup.html')" modifier="large">
+			会員登録
+		</ons-button>
+	</div>
+	
+	<ons-modal var="modal">
+		<ons-icon icon="ion-load-c" spin="true"></ons-icon>
+		サインアップしています
+	</ons-modal>
 
 </ons-page>

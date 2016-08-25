@@ -1,0 +1,68 @@
+<ons-page ng-controller="NewsListController" id="newsList" style="height:100%;">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">新着情報</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<ons-list id="news_list_ul">
+
+		<!-- first -->
+		<ons-list-item ng-if="$first"
+			class="news_list" ng-repeat="data in dataList"
+			modifier="tappable" class="list__item__line-height"
+			>
+				<div class="news">
+				<h1 class="">
+					{{data.title}}
+				</h1>
+		
+				<p ng-bind-html="::data.body">
+				</p>
+			</div>
+			
+			<ul class="button_group three">
+				<li>
+					<a class="button icon" href="tel:{{shop_info.telnum}}">
+						<img src="images/icon/call_s.png" alt="電話を掛ける" />
+						<span>CALL</span>
+					</a>
+				</li>
+				<li>
+					<a class="button icon" href="mailto:{{shop_info.mail}}?subject=「{{data.title}}」の出席希望&body=(氏名をお忘れなく)">
+						<img src="images/icon/mail_s.png" alt="メール" />
+						<span>MAIL</span>
+					</a>
+				</li>
+			</ul>
+		</ons-list-item>
+
+		<ons-list-item ng-if="!$first"
+			class="news_list" ng-repeat="data in dataList"
+			modifier="tappable" class="list__item__line-height"
+			ng-click="showDetailPage(data)"
+			>
+			<div>
+				{{data.title}}
+			</div>
+			<span style="margin-left: 10px;"></span>
+		</ons-list-item>
+		
+		<!-- #list_end -->
+		<div id="list_end">
+			<div class="loading">
+				<img src="images/loader.gif" alt="Loading..." /><br>
+				読み込み中...
+			</div>
+			<div class="load_more">
+				さらに読み込む。<br>
+				<span class="swipe">▲上にスワイプ▲</span>
+			</div>
+		</div>
+		<!-- // #list_end -->
+
+	</ons-list>
+   
+</ons-page>

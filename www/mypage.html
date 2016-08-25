@@ -1,23 +1,54 @@
-<ons-page ng-controller="MypageController">
-    <ons-toolbar>
-        <div class="left">
-            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-                <ons-icon icon="ion-navicon"></ons-icon>
-            </ons-toolbar-button>
-        </div>
-        <div class="center">マイカード</div>
-    </ons-toolbar>
-    
-    <ons-list modifier="inset" style="margin-top: 20px;">
-        <ons-list-header class="title">マイカード</ons-list-header>
-        <ons-list-item>
-        	お名前: {{data.name}}
-        </ons-list-item>
-        <ons-list-item>
-			メースアドレス: {{data.email}}
-        </ons-list-item>
+<ons-page ng-controller="MypageController as mypage">
 
-    </ons-list>
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">サインアップ</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
 
-<div id="hoge">fff</div>
+	<div>
+		会員ナンバー: {{id}}
+		<span>※ログインの際に必要です</span>
+	</div>
+	
+	<div>
+		ポイント: {{point}}
+	</div>
+	
+	<ons-list modifier="inset" style="margin-top: 20px;">
+		<ons-list-header class="title">会員情報</ons-list-header>
+		<ons-list-item>
+			お名前: {{::userData.name}}
+		</ons-list-item>
+		<ons-list-item>
+			フリガナ: {{::userData.kana}}
+		</ons-list-item>
+		<ons-list-item>
+			お誕生日: {{::userData.birthday}}
+		</ons-list-item>
+		<ons-list-item>
+			郵便番号: {{::userData.zip}}
+		</ons-list-item>
+		<ons-list-item>
+			ご住所: {{::userData.address1}} {{::userData.address2}}
+		</ons-list-item>
+		<ons-list-item>
+			お電話番号(携帯可): {{::userData.tel}}
+		</ons-list-item>
+		<ons-list-item>
+			結婚記念日: {{::userData.wedding_anniversary}}
+		</ons-list-item>
+		<ons-list-item>
+			メール・ラインでのご案内: {{::userData.is_receive_mail}}
+		</ons-list-item>
+	</ons-list>
+	
+	<ons-button modifier="large" ng-click="logout()">ログアウト</ons-button>
+	
+	<ons-modal var="modal" >
+		<ons-icon icon="ion-load-c" spin="true"></ons-icon>
+	</ons-modal>
+	
 </ons-page>
+

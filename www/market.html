@@ -1,47 +1,77 @@
-<ons-navigator var="navi" page="list.html"></ons-navigator>
-    <ons-template id="list.html">
-        <ons-page ng-controller="MarketListController">
-            <ons-toolbar>
-                <div class="left">
-                    <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-                        <ons-icon icon="ion-navicon"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
-                <div class="center">{{data.name}}</div>
-            </ons-toolbar>
+<ons-page ng-controller="MarketController" class="market">
 
-            <ons-list>
-                <ons-list-item ng-repeat="data in dataList"
-                    modifier="tappable" class="list__item__line-height"
-                    ng-click="showDetailPage(data)">
-                    <span style="margin-left: 10px;">
-                        <ons-icon icon="ion-image" style="color: #666;"></ons-icon>
-                            {{data.title}}
-                    </span>
-                </ons-list-item>
-            </ons-list>
-        </ons-page>
-    </ons-template>
- 
-    <ons-template id="detail.html">
-        <ons-page ng-controller="MarketController">
-            <ons-toolbar>
-                <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">{{data.title}}</div>
-            </ons-toolbar>
- 
-            <div>
-                <ons-list modifier="inset">
-                    <ons-list-item>
-                        <ons-row>
-                            <ons-col>{{data.title}}</ons-col>
-                            <ons-col>{{data.date}}</ons-col>
-                        </ons-row>
-                    </ons-list-item>
-                    <ons-list-item>
-                        {{data.content}}
-                    </ons-list-item>
-                </ons-list>
-            </div>
-        </ons-page>
-    </ons-template>
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">{{page_title}}</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<div>
+		<h1 style="margin-bottom: 0;">
+			{{data.title}}
+		</h1>
+		<p style="width: 100%; text-align: right;">{{data.created_at | mysql_date:'yyyy年M月d日 HH:mm 現在'}}</p>
+		<p>
+			※販売者に買い取り価格(税込み価格 現物、現金取引 500g以上)
+		</p>
+		
+		<h2 class="gold">金</h2>
+		<dl>
+			<dt>販売価格<br>(前日比)</dt>
+			<dd>
+				{{data.price_gold | currency}} /g<br>
+				({{data.ratio_gold | currency}})
+			</dd>
+			<dt>買取価格</dt>
+			<dd>
+				{{data.purchase_gold | currency}} /g
+			</dd>
+		</dl>
+		
+		<h2 class="platinum">プラチナ</h2>
+		<dl>
+			<dt>販売価格<br>(前日比)</dt>
+			<dd>
+				{{data.price_platinum | currency}} /g<br>
+				({{data.ratio_platinum | currency}})
+			</dd>
+			<dt>買取価格</dt>
+			<dd>
+				{{data.purchase_platinum | currency}} /g
+			</dd>
+		</dl>
+		
+		<h2 class="silver">銀</h2>
+		<dl>
+			<dt>販売価格<br>(前日比)</dt>
+			<dd>
+				{{data.price_silver | currency}} /g<br>
+				({{data.ratio_silver | currency}})
+			</dd>
+			<dt>買取価格</dt>
+			<dd>
+				{{data.purchase_silver | currency}} /g
+			</dd>
+		</dl>
+		
+		
+		<h2 class="">為替(インターバンク)</h2>
+		<p>
+			1$&nbsp;=&nbsp;{{data.exchange | currency}}
+		</p>
+		
+		<h2 class="">NY(コメックス)金相場</h2>
+		<p>
+			{{data.market_gold | currency: '$'}}
+		</p>
+		
+		<h2 class="">NY白金相場</h2>
+		<p>
+			{{data.market_platinum | currency: '$'}}
+		</p>
+		
+	</div>
+
+</ons-page>
+

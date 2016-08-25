@@ -1,0 +1,63 @@
+<ons-page ng-controller="SignupConfirmController">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">サインアップ</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<ons-list modifier="inset" style="margin-top: 20px;">
+		<ons-list-header>
+			下記内容で登録いたします。
+			よろしいですか?
+		</ons-list-header>
+		<ons-list-item class="">
+			パスワード: ***** (非表示)
+		</ons-list-item>
+		<ons-list-item class="">
+			お名前: <span class="" ng-bind="::data.userData.name"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			フリガナ: <span class="" ng-bind="::data.userData.kana"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			お誕生日: <span class="" ng-bind="::data.userData.birthday|date:'yyyy年M月d日'"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			郵便番号: <span class="" ng-bind="::data.userData.postal_code"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			ご住所: <span class="" ng-bind="::data.userData.address1"></span> <span class="" ng-bind="::data.userData.address2"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			お電話番号(携帯可): <span class="" ng-bind="::data.userData.tel"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			メールアドレス: <span class="" ng-bind="::data.userData.email"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			結婚記念日: <span class="" ng-bind="::data.userData.wedding_anniversary|date:'yyyy年M月d日'"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			その他質問など: <span class="" ng-bind="::data.userData.memo"></span>
+		</ons-list-item>
+		<ons-list-item class="">
+			メール・ラインでのご案内: <span class="" ng-bind="::data.userData.is_receive_mail"></span>
+		</ons-list-item>
+	</ons-list>
+
+	<div class="padding-normal">
+		<ons-button modifier="large" ng-click="doSignUp()">サインアップ</ons-button>
+
+		<ons-button modifier="large" ng-click="navi.popPage()">キャンセル</ons-button>
+	</div>
+
+	<ons-modal var="modal">
+		<ons-icon icon="ion-load-c" spin="true"></ons-icon>
+		サインアップしています
+	</ons-modal>
+
+</ons-page>
+
+

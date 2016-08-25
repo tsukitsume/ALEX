@@ -1,48 +1,36 @@
-<ons-navigator var="navi" page="list.html"></ons-navigator>
-    <ons-template id="list.html">
-        <ons-page ng-controller="NewsListController">
-            <ons-toolbar>
-                <div class="left">
-                    <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-                        <ons-icon icon="ion-navicon"></ons-icon>
-                    </ons-toolbar-button>
-                </div>
-                <div class="center">{{data.name}}</div>
-            </ons-toolbar>
+<ons-page ng-controller="NewsController">
 
-            <ons-list id="news_list_ul">
-                <ons-list-item class="news_list" ng-repeat="data in dataList"
-                    modifier="tappable" class="list__item__line-height"
-                    ng-click="showDetailPage(data)">
-                    <span style="margin-left: 10px;">
-                        <ons-icon icon="ion-image" style="color: #666;"></ons-icon>
-                            {{data.title}}
-                    </span>
-                    <span class="content">{{data.content}}</span>
-                </ons-list-item>
-            </ons-list>
-        </ons-page>
-    </ons-template>
- 
-    <ons-template id="detail.html">
-        <ons-page ng-controller="NewsController">
-            <ons-toolbar>
-                <div class="left"><ons-back-button>Back</ons-back-button></div>
-                <div class="center">{{data.title}}</div>
-            </ons-toolbar>
- 
-            <div>
-                <ons-list modifier="inset">
-                    <ons-list-item>
-                        <ons-row>
-                            <ons-col>{{data.title}}</ons-col>
-                            <ons-col>{{data.date}}</ons-col>
-                        </ons-row>
-                    </ons-list-item>
-                    <ons-list-item>
-                        {{data.content}}
-                    </ons-list-item>
-                </ons-list>
-            </div>
-        </ons-page>
-    </ons-template>
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">イベント・行事予定</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<div class="news">
+		<h1 class="">
+			{{::data.title}}
+		</h1>
+		<p ng-bind-html="::data.body">
+		</p>
+		
+		<h2>お問い合わせ</h2>
+		<p>メールで出席希望の場合は「氏名」を本文にご記入下さい</p>
+		<ul class="button_group three">
+			<li>
+				<a class="button icon" href="tel:{{shop_info.telnum}}">
+					<img src="images/icon/call_s.png" alt="電話を掛ける" />
+					<span>CALL</span>
+				</a>
+			</li>
+			<li>
+				<a class="button icon" href="mailto:{{shop_info.mail}}?subject=「{{data.title}}」の出席希望&body=(氏名をお忘れなく)">
+					<img src="images/icon/mail_s.png" alt="メール" />
+					<span>MAIL</span>
+				</a>
+			</li>
+		</ul>
+		
+	</div>
+
+</ons-page>

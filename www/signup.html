@@ -1,94 +1,116 @@
-<ons-page ng-controller="SignupController">
+<ons-page ng-controller="SignupController as signup">
+
+	<!-- toolbar -->
 	<ons-toolbar>
-		<div class="left">
-			<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-				<ons-icon icon="ion-navicon"></ons-icon>
-			</ons-toolbar-button>
-		</div>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
 		<div class="center">サインアップ</div>
 	</ons-toolbar>
+	<!-- // toolbar -->
 
+	<form name="myForm" novalidate>
 	<ons-list modifier="inset" style="margin-top: 20px;">
-		<ons-list-header class="title">サインアップ</ons-list-header>
+		<!-- <ons-list-header class="title">サインアップ</ons-list-header> -->
+
+		<!-- password -->
+		<ons-list-item>
+			パスワード
+			<input ng-model="signup.password" name="password" type="password" placeholder="パスワード"
+				ng-required="true"
+				ng-minlength="4"
+				class="text-input" style="width: 100%" />
+			<span class="error" ng-show="myForm.password.$error.required">必須項目です</span>
+			<span class="error" ng-show="myForm.password.$error.minlength">4文字以上で入力して下さい</span>
+		</ons-list-item>
 
 		<!-- name -->
 		<ons-list-item>
-			お名前<span class="required">必須</span>
-			<input type="text" class="text-input--transparent" placeholder="お名前" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			お名前
+			<input ng-model="signup.userData.name" name="name" type="text" placeholder="お名前"
+				ng-required="true"
+				class="text-input"  style="width: 100%" />
+			<span class="error" ng-show="myForm.name.$error.required">必須項目です</span>
 		</ons-list-item>
 
 		<!-- kana -->
 		<ons-list-item>
 			フリガナ
-			<input type="text" class="text-input--transparent" placeholder="フリガナ" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			<input ng-model="signup.userData.kana" name="kana" type="text" placeholder="フリガナ"
+				class="text-input"  style="width: 100%" />
 		</ons-list-item>
 
-		<!-- birtyday_** -->
+		<!-- birtyday -->
 		<ons-list-item>
-			お誕生日
-			<div style="width: 100%;">
-				<input type="text" class="text-input--transparent" placeholder="0000" size="6" id="InputName" ng-model="data.input_name" />年&nbsp;
-				<input type="text" class="text-input--transparent" placeholder="00"   size="4" id="InputName" ng-model="data.input_name" />月&nbsp;
-				<input type="text" class="text-input--transparent" placeholder="00"   size="4" id="InputName" ng-model="data.input_name" />日&nbsp;
-			</div>
+			お誕生日<br>
+			<input ng-model="signup.userData.birthday" name="birthday" type="date" placeholder=""
+				class="text-input"  style="width: 100%" />
 		</ons-list-item>
 
 		<!-- postal_code -->
 		<ons-list-item>
 			郵便番号
-			<input type="text" class="text-input--transparent" placeholder="000-0000" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			<input ng-model="signup.userData.postal_code" name="postal_code" type="text" placeholder="000-0000"
+				class="text-input"  style="width: 100%" />
 		</ons-list-item>
 
 		<!-- address -->
 		<ons-list-item>
 			ご住所
-			<input type="text" class="text-input--transparent" placeholder="都道府県・市区町村" style="width: 100%" id="InputName" ng-model="data.input_name" />
-			<input type="text" class="text-input--transparent" placeholder="番地・建物名等" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			<input ng-model="signup.userData.address1" name="address1" type="text" placeholder="都道府県・市区町村"
+				class="text-input"  style="width: 100%" />
+			<input ng-model="signup.userData.address2" name="address2" type="text" placeholder="番地・建物名等"
+				class="text-input"  style="width: 100%" />
 		</ons-list-item>
 
 		<!-- お電話番号(携帯可) -->
 		<ons-list-item>
 			お電話番号(携帯可)
-			<input type="text" class="text-input--transparent" placeholder="000-0000-0000" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			<input ng-model="signup.userData.tel" name="tel" type="tel" placeholder="000-0000-0000"
+				class="text-input"  style="width: 100%" />
 		</ons-list-item>
 
 		<!-- メールアドレス -->
 		<ons-list-item>
 			メールアドレス
-			<input type="text" class="text-input--transparent" placeholder="" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			<input ng-model="signup.userData.email" name="email" type="email" placeholder="example@email.com"
+				class="text-input"  style="width: 100%" />
+			<span class="error" ng-show="myForm.email.$error">メールの形式が正しくありません</span>
 		</ons-list-item>
 
 		<!-- 結婚記念日 -->
 		<ons-list-item>
-			結婚記念日
-			<div style="width: 100%;">
-				<input type="text" class="text-input--transparent" placeholder="0000" size="6" id="InputName" ng-model="data.input_name" />年&nbsp;
-				<input type="text" class="text-input--transparent" placeholder="00"   size="4" id="InputName" ng-model="data.input_name" />月&nbsp;
-				<input type="text" class="text-input--transparent" placeholder="00"   size="4" id="InputName" ng-model="data.input_name" />日&nbsp;
-			</div>
+			結婚記念日<br>
+			<input ng-model="signup.userData.wedding_anniversary" name="wedding_anniversary" type="date" placeholder=""
+				class="text-input"  style="width: 100%" />
 		</ons-list-item>
 
 		<!-- その他質問など -->
 		<ons-list-item>
 			その他質問など
-			<input type="textarea" class="text-input--transparent" placeholder="名前" style="width: 100%" id="InputName" ng-model="data.input_name" />
+			<textarea ng-model="signup.userData.memo" name="memo" placeholder="質問がある際に入力してください"
+				class="text-input"  style="width: 100%" rows="4" />
+			</textarea>
 		</ons-list-item>
 
-		<!-- メール・ラインでのご案内可・不可 -->
+		<!-- is_メール・ラインでのご案内可・不可 -->
 		<ons-list-item>
 			メール・ラインでのご案内
 			<div style="width: 100%;">
-				<label><input type="radio" class="" name="" ng-model="" value="可">可</label>
-				<label><input type="radio" class="" name="" ng-model="" value="不可">不可</label>
+				<label><input type="radio" class="" ng-model="signup.userData.is_receive_mail" name="is_receive_mail" value="可">可</label>
+				<label><input type="radio" class="" ng-model="signup.userData.is_receive_mail" name="is_receive_mail" value="不可">不可</label>
 			</div>
 		</ons-list-item>
 
-		<div style="padding: 10px 9px">
-			<ons-button modifier="large" ng-click="doSignUp()">サインアップ</ons-button>
+		<div class="padding-normal">
+			<span class="error" ng-show="myForm.password.$error.required">パスワードを入力してください</span>
+			<span class="error" ng-show="myForm.password.$error.minlength">パスワードを4文字以上で入力して下さい</span>
+			<span class="error" ng-show="myForm.name.$error.required">名前を入力して下さい</span>
+			<span class="error" ng-show="myForm.email.$error">メールの形式が正しくありません</span>
+			<ons-button modifier="large" ng-click="doSignUp(signup)" ng-disabled="myForm.$invalid">サインアップ</ons-button>
 		</div>
 	</ons-list>
-	
-	<div id="hoge"></div>
+	</form>
 
 </ons-page>
+
+
 

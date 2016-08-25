@@ -1,7 +1,8 @@
 {
     "plugins": [
         "mobi.monaca.plugins.Monaca",
-        "mobi.monaca.plugins.MonacaBackend"
+        "mobi.monaca.plugins.MonacaBackend",
+        "mobi.monaca.plugins.BarcodeScanner@1.0.1"
     ],
     "framework_version": "3.5",
     "xcode_version": "6",
@@ -18,7 +19,9 @@
     "category": "User Template",
     "platform": [
         "android",
-        "ios"
+        "ios",
+        "winrt",
+        "chrome"
     ],
-    "name": "generated-1468972788-57185b5dfd1734d133e98c23"
+    "name": "generated-1472111082-57ae88e77e2193b92f66f2ce"
 }

@@ -1,36 +1,79 @@
 <ons-page ng-controller="ShopController">
-    <ons-toolbar>
-        <div class="left">
-            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()">
-                <ons-icon icon="ion-navicon"></ons-icon>
-            </ons-toolbar-button>
-        </div>
-        <div class="center">{{shop_info.name}}</div>
-    </ons-toolbar>
-    
-    <ons-list modifier="inset">
-        <ons-list-item style="text-align: center;">
-            <img src="{{shop_info.img}}" style="margin-top: 10px;" width="80%">
-            <br>
-            <span class="label">{{shop_info.name}}</span>
-        </ons-list-item>
-    </ons-list>
-    
-    <ons-list modifier="inset" style="margin-top: 20px;">
-        <ons-list-header class="title">{{shop_info.name}}</ons-list-header>
-        <ons-list-item class="desc">
-            {{shop_info.zip}}<br>
-            {{shop_info.address}}
-        </ons-list-item>
-        <ons-list-item class="desc">
-            <a href="comgooglemaps://?q=35.006096,135.7636673&zoom=12">googlemap起動</a><br>
-            <a href="maps:q=35.006096,135.7636673">標準マップ起動</a>
-        </ons-list-item>
-        <ons-list-item class="desc">
-            TEL: {{shop_info.tel}}<br>
-            FAX: {{shop_info.fax}}<br>
-            <a href="tel:{{shop_info.telnum}}" class="btn large">電話を掛ける</a>
-        </ons-list-item>
-    </ons-list>
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">店舗情報</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+	
+	
+	<div class="padding-normal">
+		<img src="{{shop_info.img}}" style="margin-top: 10px;" width="100%">
+		<h1>{{shop_info.e_name}}</h1>
+		<h2>{{shop_info.name}}</h2>
+		
+		<address>
+			<span ng-bind-html="shop_info.zip"></span>
+			<span ng-bind-html="shop_info.address"></span>
+		</address>
+		<address>
+			<span ng-bind-html="shop_info.e_zip"></span>
+			<span ng-bind-html="shop_info.e_address"></span>
+		</address>
+		<ul class="button_group three">
+			<li>
+				<a class="button icon" href="http://maps.apple.com/maps?ll=35.006096,135.7636673&z=17&q=loc:35.006096,135.7636673">
+					<img src="images/icon/map_s.png" alt="MAP" />
+					<span>MAP</span>span>
+				</a>
+			</li>
+			<li>
+				<a class="button icon" href="tel:{{shop_info.telnum}}">
+					<img src="images/icon/call_s.png" alt="電話を掛ける" />
+					<span>CALL</span>
+				</a>
+			</li>
+			<li>
+				<a class="button icon" href="mailto:{{shop_info.mail}}">
+					<img src="images/icon/mail_s.png" alt="メール" />
+					<span>MAIL</span>
+				</a>
+			</li>
+		</ul>
+		
+		<dl>
+			<dt>TEL:</dt>
+				<dd ng-bind="::shop_info.tel"></dd>
+			<dt>FAX:</dt>
+				<dd ng-bind="::shop_info.fax"></dd>
+			<dt>MAIL:</dt>
+				<dd ng-bind="::shop_info.mail"></dd>
+			<dt>HP:</dt>
+				<dd ng-bind="::shop_info.web"></dd>
+			<dt>OPEN:</dt>
+				<dd ng-bind-html="::shop_info.open"></dd>
+			<dt>CLOSE:</dt>
+				<dd ng-bind-html="::shop_info.close"></dd>
+		</dl>
+		<p ng-bind-html="::shop_info.description">
+		</p>
+
+		<h2>HOT ACCESS</h2>
+		<h3>ALEX</h3>
+		<ul class="staffs">
+			<li ng-repeat="staff in ::staffs">
+				<span class="name">{{staff.name}}</span>
+				<a class="button" href="tel:{{staff.telnum}}">TEL</a>
+				<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
+			</li>
+		</ul>
+
+		<ons-button ng-click="navi.pushPage('history.html')" modifier="large">
+			歴史
+		</ons-button>
+	
+	</div>
+
 
 </ons-page>

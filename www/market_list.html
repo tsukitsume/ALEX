@@ -1,0 +1,133 @@
+<ons-page ng-controller="MarketListController" id="marketList" style="height:100%;">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="center">貴金属相場情報</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<ons-list id="market_list_ul">
+
+		<ons-list-item ng-repeat="data in dataList"
+			class="list__item__line-height market_list"
+			style="pagging:0; margin:0;width: 100%;"
+			>
+			
+			<div ng-if="$first"
+				class="market">
+				<h1 style="margin-bottom: 0;">
+					<div style="color:red;">最新情報</div>
+					{{data.title}}
+				</h1>
+				<p style="width: 100%; text-align: right;">{{data.created_at | mysql_date:'yyyy年M月d日 HH:mm 現在'}}</p>
+				<p>
+					※販売者に買い取り価格(税込み価格 現物、現金取引 500g以上)
+				</p>
+				
+				
+				<h2 class="gold">金</h2>
+				<dl>
+					<dt>販売価格<br>(前日比)</dt>
+					<dd>
+						{{data.price_gold | currency}} /g<br>
+						({{data.ratio_gold | currency}})
+					</dd>
+					<dt>買取価格</dt>
+					<dd>
+						{{data.purchase_gold | currency}} /g
+					</dd>
+				</dl>
+				
+				<h2 class="platinum">プラチナ</h2>
+				<dl>
+					<dt>販売価格<br>(前日比)</dt>
+					<dd>
+						{{data.price_platinum | currency}} /g<br>
+						({{data.ratio_platinum | currency}})
+					</dd>
+					<dt>買取価格</dt>
+					<dd>
+						{{data.purchase_platinum | currency}} /g
+					</dd>
+				</dl>
+				
+				<h2 class="silver">銀</h2>
+				<dl>
+					<dt>販売価格<br>(前日比)</dt>
+					<dd>
+						{{data.price_silver | currency}} /g<br>
+						({{data.ratio_silver | currency}})
+					</dd>
+					<dt>買取価格</dt>
+					<dd>
+						{{data.purchase_silver | currency}} /g
+					</dd>
+				</dl>
+				
+				
+				<h2 class="">為替(インターバンク)</h2>
+				<p>
+					1$&nbsp;=&nbsp;{{data.exchange | currency}}
+				</p>
+				
+				<h2 class="">NY(コメックス)金相場</h2>
+				<p>
+					{{data.market_gold | currency: '$'}}
+				</p>
+				
+				<h2 class="">NY白金相場</h2>
+				<p>
+					{{data.market_platinum | currency: '$'}}
+				</p>
+				
+				<h2>お問い合わせ</h2>
+				<ul class="button_group three">
+
+					<li>
+						<a class="button icon" href="tel:{{shop_info.telmarketnum}}">
+							<img src="images/icon/call_s.png" alt="電話を掛ける" />
+							<span>CALL</span>
+						</a>
+					</li>
+					<li>
+						<a class="button icon" href="mailto:{{shop_info.mail}}?subject=貴金属買い取りについてお問い合わせ({{data.created_at}})">
+							<img src="images/icon/mail_s.png" alt="メール" />
+							<span>MAIL</span>
+						</a>
+					</li>
+				</ul>
+				
+				<h3 style="width: 100%; fontweight: bold; text-align: center; color: red;">
+					▼&nbsp;過去の情報&nbsp;▼
+				</h3>
+			</div>
+			
+			
+			<div ng-if="!$first"
+				ng-click="showDetailPage(data)"
+				modifier="tappable">
+				<h3>
+					{{data.title}}
+				</h3>
+				<div class="created_at" style="width: 100%; text-align: right;">{{data.created_at | mysql_date:'yyyy年M月d日 HH:mm'}}</div>
+			</div>
+			
+		</ons-list-item>
+		
+		<!-- #list_end -->
+		<div id="list_end">
+			<div class="loading">
+				<img src="images/loader.gif" alt="Loading..." /><br>
+				読み込み中...
+			</div>
+			<div class="load_more">
+				さらに読み込む。<br>
+				<span class="swipe">▲上にスワイプ▲</span>
+			</div>
+		</div>
+		<!-- // #list_end -->
+
+	</ons-list>
+   
+</ons-page>

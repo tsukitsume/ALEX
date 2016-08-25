@@ -1,0 +1,37 @@
+<ons-page ng-controller="ProductListController" id="productList" style="height:100%;">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left" ><ons-back-button>Back</ons-back-button></div>
+		<div class="center">{{page_title}}</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<ons-list id="product_list_ul">
+
+		<ons-list-item class="product_list" ng-repeat="data in dataList"
+			modifier="tappable" class="list__item__line-height"
+			ng-click="showDetailPage(data)">
+			<img class="thumbnail" src="{{BASE_URL}}{{data.thumbnail}}">
+			<h3>
+					{{data.name}}
+			</h3>
+			<p class="price price_primary">{{data.price_primary}}</p>
+		</ons-list-item>
+
+		<!-- #list_end -->
+		<div id="list_end">
+			<div class="loading">
+				<img src="images/loader.gif" alt="Loading..." /><br>
+				読み込み中...
+			</div>
+			<div class="load_more">
+				さらに読み込む。<br>
+				<span class="swipe">▲上にスワイプ▲</span>
+			</div>
+		</div>
+		<!-- // #list_end -->
+
+	</ons-list>
+   
+</ons-page>
