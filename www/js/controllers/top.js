@@ -27,9 +27,10 @@ app.controller('TopController', function($scope, $http, SharedData)
 		var slideY = LI_HEIGHT;
 
 		$('#menu_sub').css({height: (LI_COUNT-1) * LI_HEIGHT});
+		$('#menu_main').css({bottom: (LI_COUNT-1) * LI_HEIGHT});
 		$('#menu_sub').scrollTop(LI_HEIGHT);
-		$('#main_image').height( $('#main_content').height() - $('#menu_sub').height() );
-		const IMAGE_HEIGHT = $('#main_image').height();
+		const IMAGE_HEIGHT = $('#main_content').height() - $('#menu_sub').height();
+		$('#main_image').height( IMAGE_HEIGHT );
 		const PER_FOR_IMAGE = IMAGE_HEIGHT/LI_HEIGHT;
 
 		$('#main_image li:first-child').before($('#main_image li:last-child'));
@@ -37,11 +38,38 @@ app.controller('TopController', function($scope, $http, SharedData)
 		$('#main_image').scrollTop(IMAGE_HEIGHT);
 		$('#menu_main').scrollTop(LI_HEIGHT);
 
+		var scrollTo = 0;
+		var interval = null;
+		$('#menu_sub li').on('click', function(e)
+		{
+			clearInterval(interval);
+			// scrollTo = $('#menu_sub').scrollTop() + $(e.target).offset().top - $('#menu_sub').offset().top + LI_HEIGHT;
+			scrollTo = $(e.target).offset().top - $('#menu_sub').offset().top + LI_HEIGHT;
+
+			console.log(scrollTo);
+
+			interval = setInterval(function()
+			{
+				console.log(scrollTo);
+				scrollTo-=5;
+				slideY+=5;
+				move();
+				if (scrollTo <= 0)
+				{
+					clearInterval(interval);
+				}
+			}, 10);
+			// $('#menu_sub').scrollTop(slideY);
+
+		//	$('#menu_sub').stop(false, true).animate({scrollTop: slideY},1000);
+		});
+
 		$('#menu_sub').on(
 		{
 			/* フリック開始時 */
 			'touchstart': function(e)
 			{
+				clearInterval(interval);
 				touchY = event.changedTouches[0].pageY;
 				slideY = $('#menu_sub').scrollTop();
 			},
@@ -110,7 +138,6 @@ app.controller('TopController', function($scope, $http, SharedData)
 					$('#main_image li:first-child').before($('#main_image li:last-child'));
 					slideY += LI_HEIGHT;
 				}
-				console.log(slideY);
 
 				/*
 				if (slideY > UL_HEIGHT*2 + LI_HEIGHT)
@@ -142,3 +169,4 @@ app.controller('TopController', function($scope, $http, SharedData)
 	});
 	*/
 });
+
