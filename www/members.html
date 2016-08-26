@@ -10,6 +10,15 @@
 	<div>
 		<span>会員専用コンテンツ01</span>
 	</div>
+		<h2>HOT ACCESS</h2>
+		<h3>ALEX</h3>
+		<ul class="staffs">
+			<li ng-repeat="staff in ::staffs">
+				<span class="name">{{staff.name}}</span>
+				<a class="button" href="tel:{{staff.telnum}}">TEL</a>
+				<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
+			</li>
+		</ul>
 
 </ons-page>
 

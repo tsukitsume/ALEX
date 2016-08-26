@@ -22,7 +22,7 @@
 				</h1>
 				<p style="width: 100%; text-align: right;">{{data.created_at | mysql_date:'yyyy年M月d日 HH:mm 現在'}}</p>
 				<p>
-					※販売者に買い取り価格(税込み価格 現物、現金取引 500g以上)
+					※販売並に買い取り価格(税込み価格 現物、現金取引 500g以上)
 				</p>
 				
 				
@@ -30,12 +30,12 @@
 				<dl>
 					<dt>販売価格<br>(前日比)</dt>
 					<dd>
-						{{data.price_gold | currency}} /g<br>
-						({{data.ratio_gold | currency}})
+						{{data.price_gold |  currency:undefined:0}} /g<br>
+						({{data.ratio_gold |  currency:undefined:0}} /g)
 					</dd>
 					<dt>買取価格</dt>
 					<dd>
-						{{data.purchase_gold | currency}} /g
+						{{data.purchase_gold |  currency:undefined:0}} /g
 					</dd>
 				</dl>
 				
@@ -43,21 +43,21 @@
 				<dl>
 					<dt>販売価格<br>(前日比)</dt>
 					<dd>
-						{{data.price_platinum | currency}} /g<br>
-						({{data.ratio_platinum | currency}})
+						{{data.price_platinum | currency:undefined:0}} /g<br>
+						({{data.ratio_platinum |  currency:undefined:0}} /g)
 					</dd>
 					<dt>買取価格</dt>
 					<dd>
-						{{data.purchase_platinum | currency}} /g
+						{{data.purchase_platinum |  currency:undefined:0}} /g
 					</dd>
 				</dl>
 				
-				<h2 class="silver">銀</h2>
+				<h2 class="silver">銀&nbsp;(30kg単位)</h2>
 				<dl>
 					<dt>販売価格<br>(前日比)</dt>
 					<dd>
 						{{data.price_silver | currency}} /g<br>
-						({{data.ratio_silver | currency}})
+						({{data.ratio_silver | currency}} /g)
 					</dd>
 					<dt>買取価格</dt>
 					<dd>
@@ -97,7 +97,12 @@
 						</a>
 					</li>
 				</ul>
-				
+
+				<p>
+					※貴金属や金売買はALEX親会社&nbsp;和田貴金属宝飾店&nbsp;が実務を担当しております。<br>
+					※ブランド問わず、1g から買い取り致します。
+				</p>
+
 				<h3 style="width: 100%; fontweight: bold; text-align: center; color: red;">
 					▼&nbsp;過去の情報&nbsp;▼
 				</h3>

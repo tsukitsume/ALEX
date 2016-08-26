@@ -51,8 +51,8 @@ app.controller('TopController', function($scope, $http, SharedData)
 			interval = setInterval(function()
 			{
 				console.log(scrollTo);
-				scrollTo-=5;
-				slideY+=5;
+				scrollTo-=10;
+				slideY+=10;
 				move();
 				if (scrollTo <= 0)
 				{

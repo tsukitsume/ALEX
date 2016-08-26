@@ -3,22 +3,22 @@
 	<!-- toolbar -->
 	<ons-toolbar>
 		<div class="left"><ons-back-button>Back</ons-back-button></div>
-		<div class="center">店舗情報</div>
+		<div class="center">会社概要</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
-	
-	
+
+
 	<div class="padding-normal">
 		<img src="{{shop_info.img}}" style="margin-top: 10px;" width="100%">
-		<h1>{{shop_info.e_name}}</h1>
-		<h2>{{shop_info.name}}</h2>
-		
+		<h1>{{shop_info.name}}</h1>
 		<address>
-			<span ng-bind-html="shop_info.zip"></span>
+			<span ng-bind-html="shop_info.zip"></span><br>
 			<span ng-bind-html="shop_info.address"></span>
 		</address>
+
+		<h2>{{shop_info.e_name}}</h2>
 		<address>
-			<span ng-bind-html="shop_info.e_zip"></span>
+			<span ng-bind-html="shop_info.e_zip"></span><br>
 			<span ng-bind-html="shop_info.e_address"></span>
 		</address>
 		<ul class="button_group three">
@@ -56,23 +56,29 @@
 			<dt>CLOSE:</dt>
 				<dd ng-bind-html="::shop_info.close"></dd>
 		</dl>
-		<p ng-bind-html="::shop_info.description">
+		<p>
+			宝石、貴金属製品&nbsp;輸入・製造・小売業<br>創業 1990年2月22日(平成元年2月22日)
+		</p>
+		<h3>NETWORK</h3>
+		<p>
+			TOKYO, HONGKONG, ANTWERP, MUMBAI, SHANGHAI.
 		</p>
 
-		<h2>HOT ACCESS</h2>
-		<h3>ALEX</h3>
-		<ul class="staffs">
-			<li ng-repeat="staff in ::staffs">
-				<span class="name">{{staff.name}}</span>
-				<a class="button" href="tel:{{staff.telnum}}">TEL</a>
-				<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
-			</li>
-		</ul>
+		<h3>関連会社</h3>
+		<p>
+			<ul>
+				<li>
+					・和田貴金属宝飾店<span style="font-size:80%;">(創業1912年)</span>
+					<span style="display:block;width:auto;font-size:70%;padding-left:3em;">宝石、貴金属製品輸入・製造・金,プラチナ,銀他&nbsp;金売買</span>
+				</li>
+				<li style="clear:both">・不動産管理</li>
+			</uL>
+		</p>
 
-		<ons-button ng-click="navi.pushPage('history.html')" modifier="large">
+		<ons-button ng-click="navi.pushPage('history.html')" modifier="large" style="margin-top: 3em;">
 			歴史
 		</ons-button>
-	
+
 	</div>
 
 

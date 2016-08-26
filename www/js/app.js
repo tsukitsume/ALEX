@@ -1,7 +1,7 @@
 var app = ons.bootstrap('myApp', [ 'ngSanitize' ]);
 
 const MENUS = [
-	{ page: 'shop.html',         name: 'Shop Information',      jpname: '会社情報',   background: 'Unknown-1.jpeg', },
+	{ page: 'shop.html',         name: 'Shop Information',      jpname: '会社概要',   background: 'Unknown-1.jpeg', },
 	// { page: 'history.html',      name: 'History',               jpname: '歴史',       background: 'A-1006.jpg',     },
 	{ page: 'market_list.html',  name: 'Precious Metal Market', jpname: '貴金属相場', background: 'IMG_2012.JPG',   },
 	{ page: 'news_list.html',    name: 'Good News',             jpname: '行事予定',   background: 'IMG_0606.JPG',   },
@@ -9,7 +9,7 @@ const MENUS = [
 	{ page: 'signup.html',       name: 'Be A Member',           jpname: '会員登録',           background: 'w-102.jpg',      },
 ];
 const MENUS_LOGGEDIN = [
-	{ page: 'shop.html',         name: 'Shop Information',      jpname: '会社情報',   background: 'Unknown-1.jpeg', },
+	{ page: 'shop.html',         name: 'Shop Information',      jpname: '会社概要',   background: 'Unknown-1.jpeg', },
 	// { page: 'history.html',      name: 'History',               jpname: '歴史',       background: 'A-1006.jpg',     },
 	{ page: 'market_list.html',  name: 'Precious Metal Market', jpname: '貴金属相場', background: 'IMG_2012.JPG',   },
 	{ page: 'news_list.html',    name: 'Good News',             jpname: '行事予定',   background: 'IMG_0606.JPG',   },
@@ -56,7 +56,7 @@ const SHOP_INFO = {
 	zip          : '〒604-8062',
 	address      : '京都府京都市中京区蛸薬師通麩屋町東入ル蛸屋町153',
 	e_zip        : '〒604-8062',
-	e_address    : 'TAKOYACHO153 NAKAGYO-KU KYOTO JAPAN',
+	e_address    : 'TAKOYACHO153&nbsp;&nbsp;NAKAGYO-KU<br>KYOTO&nbsp;&nbsp;&nbsp;&nbsp;JAPAN',
 	web          : 'http://www.j-alex.com/',
 	tel          : '075-221-7777',
 	telnum       : '0752217777',
@@ -69,7 +69,6 @@ const SHOP_INFO = {
 	mail         : 'alex@j-alex.com',
 	open         : '10:00 〜 18:00',
 	close        : '<p>日曜・祝日<br>(ご予約により時間外も対応させていただきます)</p>',
-	description  : '宝石、貴金属製品&nbsp;輸入・製造・小売業<br>創業 1990年2月22日(平成元年2月22日)',
 };
 
 const STAFFS = [
