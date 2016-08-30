@@ -1,4 +1,4 @@
-<ons-page ng-controller="LoginController as login">
+<ons-page ng-controller="LoginController as login" class="login">
 
 	<!-- toolbar -->
 	<ons-toolbar>
@@ -36,32 +36,9 @@
 
 	</form>
 
-	<div class="padding-normal">
-		<p>
-			会員登録がお済みでない方は、下記よりお願いします。
-		</p>
-		<ons-button ng-click="navi.pushPage('signup.html')" modifier="large">
-			会員登録
-		</ons-button>
-	</div>
-
-	<ons-list modifier="inset">
-		<ons-list-header class="title">会員特典</ons-list-header>
-		<ons-list-item ng-bind-html="privilege" class="privilege">
-		</ons-list-item>
-		<ons-list-item ng-bind-html="point_description" class="point_description">
-		</ons-list-item>
-	</ons-list>
-	
-	<div class="padding-normal">
-		<ons-button ng-click="navi.pushPage('signup.html')" modifier="large">
-			会員登録
-		</ons-button>
-	</div>
-	
 	<ons-modal var="modal">
 		<ons-icon icon="ion-load-c" spin="true"></ons-icon>
-		サインアップしています
+		ログインしています
 	</ons-modal>
 
 </ons-page>

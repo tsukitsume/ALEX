@@ -1,4 +1,4 @@
-<ons-page ng-controller="SignupController as signup">
+<ons-page ng-controller="SignupController as signup" class="signup">
 
 	<!-- toolbar -->
 	<ons-toolbar>
@@ -71,9 +71,8 @@
 		<!-- メールアドレス -->
 		<ons-list-item>
 			メールアドレス
-			<input ng-model="signup.userData.email" name="email" type="email" placeholder="example@email.com"
+			<input ng-model="signup.userData.email" name="email" type="text" placeholder="example@email.com"
 				class="text-input"  style="width: 100%" />
-			<span class="error" ng-show="myForm.email.$error">メールの形式が正しくありません</span>
 		</ons-list-item>
 
 		<!-- 結婚記念日 -->
@@ -104,7 +103,6 @@
 			<span class="error" ng-show="myForm.password.$error.required">パスワードを入力してください</span>
 			<span class="error" ng-show="myForm.password.$error.minlength">パスワードを4文字以上で入力して下さい</span>
 			<span class="error" ng-show="myForm.name.$error.required">名前を入力して下さい</span>
-			<span class="error" ng-show="myForm.email.$error">メールの形式が正しくありません</span>
 			<ons-button modifier="large" ng-click="doSignUp(signup)" ng-disabled="myForm.$invalid">サインアップ</ons-button>
 		</div>
 	</ons-list>

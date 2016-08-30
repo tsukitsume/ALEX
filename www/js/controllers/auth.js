@@ -1,5 +1,15 @@
 /**
  * ====================
+ * Auth top
+ * ====================
+ */
+app.controller('AuthController', function($scope, $http, SharedData)
+{
+});
+
+
+/**
+ * ====================
  * Signup
  * ====================
  */
@@ -128,25 +138,9 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 	$scope.logout = function()
 	{
 		logOut();
-		navi.resetToPage('top.html');
+		navi.resetToPage('views/top.html');
 	}
 }]);
-
-/**
- * ====================
- * MyCard
- * ====================
- */
-app.controller('MembersController', function($scope, $http, SharedData)
-{
-	var userData = JSON.parse(localStorage.getItem(STORAGE_USER_DATA_KEY));
-	if (userData)
-	{
-		$scope.userData       = userData;
-		$scope.userData.id    = localStorage.getItem(STORAGE_ID);
-		$scope.userData.point = localStorage.getItem(STORAGE_POINT);
-	}
-});
 
 
 /**
@@ -156,9 +150,6 @@ app.controller('MembersController', function($scope, $http, SharedData)
  */
 app.controller('LoginController', function($scope, $http, SharedData)
 {
-	$scope.privilege = PRIVILEGE;
-	$scope.point_description = POINT_DESCRIPTION;
-	
 	var userId = localStorage.getItem(STORAGE_ID);
 	if (userId)
 	{
@@ -182,7 +173,11 @@ app.controller('LoginController', function($scope, $http, SharedData)
 				localStorage.setItem(STORAGE_ONETIME_KEY, response.onetime_key);
 				localStorage.setItem(STORAGE_POINT,       response.point);
 				localStorage.setItem(STORAGE_CREATED_AT,  response.created_at);
-				navi.resetToPage('top.html');
+				navi.resetToPage('views/top.html');
+				ons.notification.alert({
+					title: 'ログイン',
+					message: "ログインしました",
+				});
 			}
 			else
 			{

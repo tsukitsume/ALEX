@@ -1,0 +1,51 @@
+<ons-page ng-controller="TopController" class="top">
+
+	<ons-toolbar>
+		<div class="right">
+			<ons-toolbar-button ng-if="!loggedin"
+				ng-click="navi.pushPage('views/auth/login.html')">
+				ログイン
+			</ons-toolbar-button>
+			<ons-toolbar-button ng-if="loggedin"
+				ng-click="navi.pushPage('views/mypage.html')">
+				MyCard
+			</ons-toolbar-button>
+		</div>
+		<div class="center">
+			<!-- TODO image -->
+			ALEX
+		</div>
+	</ons-toolbar>
+
+	<div id="main_content">
+		<div id="main_image">
+			<ul>
+				<li ng-repeat="data in menuMain"
+				ng-click="navi.pushPage(data.page)"modifier="tappable" 
+					style="background-image: url(images/top/{{data.background}});">
+					{{data.name}}
+					<span class="jp">{{data.jpname}}</span>
+				</li>
+			</ul>
+		</div>
+
+		<div id="menu_main">
+			<ul>
+				<li ng-repeat="data in menuMain"
+				ng-click="navi.pushPage(data.page)"modifier="tappable" >
+					{{data.name}}
+				</li>
+			</ul>
+		</div>
+		<div id="menu_sub">
+			<ul>
+				<li ng-repeat="data in menuMain">
+					{{data.name}}
+				</li>
+				<li ng-repeat="data in menuMain">
+					{{data.name}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</ons-page>

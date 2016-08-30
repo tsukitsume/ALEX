@@ -10,12 +10,6 @@ app.controller('NewsListController', function($scope, $http, SharedData)
 	var loading = false;
 	var all_data_loaded = false;
 
-	$scope.showDetailPage = function(data)
-	{
-		SharedData.set(data);
-		navi.pushPage('news.html');
-	};
-
 	function readItems()
 	{
 		if (loading || all_data_loaded) return;
@@ -74,6 +68,13 @@ app.controller('NewsListController', function($scope, $http, SharedData)
 	});
 
 	readItems();
+
+
+	$scope.showDetailPage = function(data)
+	{
+		SharedData.set(data);
+		navi.pushPage('views/list/news.html');
+	};
 });
 
 /**
@@ -98,12 +99,6 @@ app.controller('ProductListController', function($scope, $http, SharedData)
 	$scope.BASE_URL = BASE_URL;
 	var loading = false;
 	var all_data_loaded = false;
-
-	$scope.showDetailPage = function(data)
-	{
-		SharedData.set(data);
-		navi.pushPage('product.html');
-	};
 
 	function readItems()
 	{
@@ -161,8 +156,13 @@ app.controller('ProductListController', function($scope, $http, SharedData)
 			}
 		});
 	});
-	
 	readItems();
+
+	$scope.showDetailPage = function(data)
+	{
+		SharedData.set(data);
+		navi.pushPage('views/list/product.html');
+	};
 });
 
 /**
@@ -251,13 +251,6 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 	var loading = false;
 	var all_data_loaded = false;
 
-
-	$scope.showDetailPage = function(data)
-	{
-		SharedData.set(data);
-		navi.pushPage('market.html');
-	};
-
 	function readItems()
 	{
 		if (loading || all_data_loaded) return;
@@ -315,9 +308,14 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 			}
 		});
 	});
-	
 
 	readItems();
+
+	$scope.showDetailPage = function(data)
+	{
+		SharedData.set(data);
+		navi.pushPage('views/list/market.html');
+	};
 });
 
 /**
