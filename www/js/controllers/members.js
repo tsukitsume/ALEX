@@ -16,6 +16,12 @@ app.controller('MembersController', function($scope, $http, SharedData)
 		$scope.userData.id    = localStorage.getItem(STORAGE_ID);
 		$scope.userData.point = localStorage.getItem(STORAGE_POINT);
 	}
+
+	ons.ready(function()
+	{
+		$("#bcTarget").barcode("1234567890128", "code128");
+		console.log('code');
+	});
 });
 
 
