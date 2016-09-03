@@ -1,11 +1,10 @@
 /*
  * top
  */
- #top_menu
- {
- 	background: green;
- 	height: 200px;
- }
+#top_menu
+{
+	height: 200px;
+}
 #main_image,
 #menu_main,
 #menu_sub
@@ -61,12 +60,14 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	box-shadow: 0 0 14px 2px rgba(125,125,125,0.5) inset;
 }
 
 /* clickable */
 #menu_main
 {
-	background: red;
+	background: url(../images/bg-l.png) repeat-y left center, url(../images/bg-r.png) repeat-y right center, -webkit-linear-gradient(#ff0f00 0%,#c20d00 100%);
+	background: url(../images/bg-l.png) repeat-y left center, url(../images/bg-r.png) repeat-y right center, linear-gradient(#ff0f00 0%,#c20d00 100%);
 	height: 40px;
 	bottom: 240px;
 }
@@ -77,6 +78,7 @@
 /* scrollable */
 #menu_sub
 {
+	background: url(../images/bg-l.png) repeat-y left center, url(../images/bg-r.png) repeat-y right center;
 	/* height: 240px; */
 	height: 240px;
 	bottom: 0;
@@ -85,7 +87,10 @@
 }
 #menu_sub li
 {
-    position:relative;
+	position:relative;
+	background: url(../images/line.png) no-repeat bottom center;
+	background-size: 240px 1px;
+	box-shadow: 0 0 14px 16px rgba(200,200,200,0.1) inset;
 }
 #menu_sub li .name
 {

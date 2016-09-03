@@ -2,14 +2,20 @@
 
 	<!-- toolbar -->
 	<ons-toolbar>
-		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
 		<div class="center">会社概要</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
 
 
-	<div class="padding-normal">
-		<img src="{{shop_info.img}}" style="margin-top: 10px;" width="100%">
+	<img src="{{shop_info.img}}" width="100%">
+
+	<div class="contents">
 		<h1>{{shop_info.name}}</h1>
 		<address>
 			<span ng-bind-html="shop_info.zip"></span><br>
@@ -48,9 +54,12 @@
 			<dt>FAX:</dt>
 				<dd ng-bind="::shop_info.fax"></dd>
 			<dt>MAIL:</dt>
-				<dd ng-bind="::shop_info.mail"></dd>
+				<dd>
+					<a href="mailto:{{shop_info.mail}}" ng-bind="::shop_info.mail">
+					</a>
+				</dd>
 			<dt>HP:</dt>
-				<dd ng-bind="::shop_info.web"></dd>
+				<dd><a href="#" ng-click="openBrowser(shop_info.web)" ng-bind="::shop_info.web"></a></dd>
 			<dt>OPEN:</dt>
 				<dd ng-bind-html="::shop_info.open"></dd>
 			<dt>CLOSE:</dt>

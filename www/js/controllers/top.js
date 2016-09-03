@@ -14,6 +14,8 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 
 	ons.ready(function()
 	{
+		console.log('top');
+
 		$timeout(function()
 		{
 			var touchY = 0;
@@ -22,7 +24,7 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 			$('#menu_sub').css({height: (LI_COUNT-1) * LI_HEIGHT});
 			$('#menu_main').css({bottom: (LI_COUNT-1) * LI_HEIGHT});
 			$('#menu_sub').scrollTop(LI_HEIGHT);
-			var IMAGE_HEIGHT = $('#main_content').height() - $('#menu_sub').height();
+			var IMAGE_HEIGHT = $('#main_content').height() - $('#menu_sub').height() - LI_HEIGHT;
 			$('#main_image').height( IMAGE_HEIGHT );
 			var PER_FOR_IMAGE = IMAGE_HEIGHT/LI_HEIGHT;
 
@@ -35,6 +37,7 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 			var interval = null;
 
 			$('#menu_sub li').off();
+			console.log(typeof $('#menu_sub li').on);
 			$('#menu_sub li').on('click', function(e)
 			{
 				console.log('click');

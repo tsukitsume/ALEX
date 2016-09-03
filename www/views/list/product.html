@@ -1,13 +1,18 @@
-<ons-page ng-controller="ProductController">
+<ons-page ng-controller="ProductController" class="product" >
 
 	<!-- toolbar -->
 	<ons-toolbar>
-		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
 		<div class="center">{{data.name}}</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
 
-	<div class="product">
+	<div class="contents product">
 		<img src="{{BASE_URL}}{{data.image}}" alt="" />
 		<h1>{{data.name}}</h1>
 		<p class="price_primary">{{data.price_primary}}</p>

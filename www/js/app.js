@@ -1,7 +1,8 @@
 var app = ons.bootstrap('myApp', [ 'ngSanitize' ]);
 
-const BASE_URL      = "http://ik1-324-22351.vs.sakura.ne.jp/alex/";
-const AJAX_BASE_URL = BASE_URL + "rest/app/";
+const BASE_URL      = "http://alexkyoto.sakura.ne.jp/system/";
+const SECURE_URL    = "https://alexkyoto.sakura.ne.jp/system/";
+const AJAX_BASE_URL = SECURE_URL + "rest/app/";
 
 const AJAX_SIGNUP    = AJAX_BASE_URL + "signup.json";    // サインアップ
 const AJAX_LOGIN     = AJAX_BASE_URL + "login.json";     // ログイン
@@ -12,11 +13,12 @@ const AJAX_NEWS      = AJAX_BASE_URL + "news.json";      // 新着情報
 const AJAX_PRODUCT   = AJAX_BASE_URL + "product.json";   // 商品情報
 const AJAX_LIKE      = AJAX_BASE_URL + "like.json";      // 「いいね」ボタン
 const AJAX_QR        = AJAX_BASE_URL + "qr.json";      // QRコード
+const AJAX_CHART     = AJAX_BASE_URL + "chart.json";      // 貴金属相場の集計
 
 const IMG_DIR        = BASE_URL + "images";
 
 const STORAGE_USER_DATA_KEY = "user_data";
-const STORAGE_ID            = "user_id";
+const STORAGE_NUMBER        = "user_number";
 const STORAGE_ONETIME_KEY   = "onetime_key";
 const STORAGE_POINT         = "point";
 const STORAGE_CREATED_AT    = "created_at";
@@ -100,6 +102,11 @@ app.controller('ShopController', function($scope, $http)
 	$scope.shop_info = SHOP_INFO;
 	$scope.desc      = SHOP_INFO.description;
 	$scope.staffs    = STAFFS;
+
+	$scope.openBrowser = function(url)
+	{
+		window.open(url, '_system');
+	}
 });
 
 
@@ -137,11 +144,11 @@ var getUserData = function()
 
 var isLoggedIn = function ()
 {
-	var id          = localStorage.getItem(STORAGE_ID);
+	var number      = localStorage.getItem(STORAGE_NUMBER);
 	var onetime_key = localStorage.getItem(STORAGE_ONETIME_KEY);
 	if (onetime_key) {
 		return {
-			id         : id,
+			number     : number,
 			onetime_key: onetime_key
 		};
 	} else {

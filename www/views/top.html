@@ -2,18 +2,20 @@
 
 	<ons-toolbar>
 		<div class="right">
-			<ons-toolbar-button ng-if="!loggedin"
+			<ons-toolbar-button
+				ng-if="!loggedin"
 				ng-click="navi.pushPage('views/auth/login.html')">
 				ログイン
 			</ons-toolbar-button>
-			<ons-toolbar-button ng-if="loggedin"
+			<ons-toolbar-button
+				ng-if="loggedin"
 				ng-click="navi.pushPage('views/mypage.html')">
 				MyCard
 			</ons-toolbar-button>
 		</div>
 		<div class="center">
 			<!-- TODO image -->
-			ALEX
+			<img src="images/logo.png" style="max-height: 40px;">
 		</div>
 	</ons-toolbar>
 
@@ -23,8 +25,8 @@
 				<li ng-repeat="data in menuMain"
 				ng-click="navi.pushPage(data.page)"modifier="tappable" 
 					style="background-image: url(images/top/{{data.background}});">
-					{{data.name}}
-					<span class="jp">{{data.jpname}}</span>
+					{{data.name}}<br>
+					<span class="jp">-&nbsp;{{data.jpname}}&nbsp;-</span>
 				</li>
 			</ul>
 		</div>
