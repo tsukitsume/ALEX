@@ -1,4 +1,19 @@
 /*
+ * list 共通
+ */
+.latest_info
+{
+	border-radius: 10px;
+	width: auto;
+	float: left;
+	margin: 1em 0;
+	font-weight: bold;
+	padding: 0.2em 0.5em;
+	color: #fff;
+	background-color: #ff0f00;
+}
+
+/*
  *top
  */
 #main_image,
@@ -95,6 +110,10 @@
 .market h2.gold { border-color: #FFD700; }
 .market h2.platinum { border-color: #e5e4e2; }
 .market h2.silver { border-color: #c0c0c0; }
+.market_list .buttons .button.gold     { background: #FFD700; border-color: #ccc;}
+.market_list .buttons .button.platinum { background: #e5e4e2; border-color: #ccc; color: #666; }
+.market_list .buttons .button.silver   { background: #c0c0c0; border-color: #ccc; }
+
 
 /*
  * product
@@ -151,4 +170,108 @@
 .product img
 {
 	max-width: 100%;
+}
+
+/**
+ * mypage
+ */
+.mypage #card
+{
+	position: relative;
+	background: url(../images/bg-l.png) repeat-y left center, url(../images/bg-r.png) repeat-y right center, -webkit-linear-gradient(#ff0f00 0%,#c20d00 100%);
+	max-width: 100%;
+	border-radius: 20px;
+	margin:  0.8em 0.4em;
+	padding: 1em 1em;
+	color: #d9d9d9;
+}
+.mypage #card img
+{
+	max-height: 40px;
+	margin-bottom: 1em;
+}
+.mypage #card .numbers,
+.mypage #card .points
+{
+	margin-bottom: 0.3em
+	text-shadow: 0 4px 4xp 0 #000;
+}
+.mypage #card .number
+{
+	font-size: 140%;
+	font-weight: bold;
+	color: #fff;
+}
+.mypage #card .point
+{
+	font-size: 140%;
+	font-weight: bold;
+	color: #fff;
+}
+.mypage #card .notice
+{
+	color: #ccc;
+	font-size: 80%;
+	text-align: right;
+}
+.mypage #card .barcord
+{
+	margin-top: 2em;
+}
+
+
+/*
+ * auth
+ */
+.add_point th
+{
+	min-width: 4em;
+}
+/*
+ * members
+ */
+.members .contents,
+.hot_access .contents
+{
+	min-height: 100%;
+	background: url(../images/bg-l.png) repeat-y left center, url(../images/bg-r.png) repeat-y right center;
+}
+.members li
+{
+	padding:0;
+	margin: 0;
+	line-height: 60px;
+	height: 60px;
+	padding-left: 1em;
+	position:relative;
+	background: url(../images/line.png) no-repeat bottom center;
+	background-size: 240px 1px;
+	box-shadow: 0 0 14px 16px rgba(200,200,200,0.1) inset;
+	text-align: center;
+}
+.members li:active
+{
+	opacity: 0.5;
+}
+
+.hot_access li
+{
+	padding:0;
+	margin: 0;
+	line-height: 60px;
+	height: 60px;
+	padding-left: 1em;
+	position:relative;
+	background: url(../images/line.png) no-repeat bottom center;
+	background-size: 240px 1px;
+	box-shadow: 0 0 14px 16px rgba(200,200,200,0.1) inset;
+}
+
+.hot_access li .buttons
+{
+	margin-top: 8px;
+	float: right;
+}
+.hot_access li .buttons
+{
 }

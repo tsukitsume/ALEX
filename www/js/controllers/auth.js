@@ -5,6 +5,7 @@
  */
 app.controller('AuthController', function($scope, $http, SharedData)
 {
+		$scope.loggedin = isLoggedIn();
 });
 
 
@@ -103,6 +104,17 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 
 	ons.ready(function()
 	{
+		$("#bcTarget").barcode(
+				$scope.number,
+				BARCODE_TYPE,
+				{
+					barWidth:  2,
+					barHeight: 80,
+					fontSize:  15,
+					output: 'svg',
+				});
+
+
 		$.post(AJAX_LOGGEDIN, {
 			number     : $scope.loggedin.number,
 			onetime_key: $scope.loggedin.onetime_key,

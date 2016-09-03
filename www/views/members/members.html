@@ -11,33 +11,20 @@
 	</ons-toolbar>
 	<!-- // toolbar -->
 
-	<div class="contents news">
-		<ul>
-			<li>HOT ACCESS</li>
-			<li>OTHER</li>
-		</ul>
+	<div class="contents">
 
-    <div style="max-width:100%;">
-        <canvas id="myChart" height="250"></canvas>
-    </div>
+		<div>
 
-	<div class="button" ng-click="getChart()" >グラフ</div>
-
-	<div class="button" ng-click="drawChart('gold')" >金</div>
-	<div class="button" ng-click="drawChart('platinum')" >プラチナ</div>
-	<div class="button" ng-click="drawChart('shilver')" >銀</div>
-	<div class="button" ng-click="drawChart()" >全て</div>
-
-
-		<div id="bcTarget" style="padding: 1em;border: 1px solid #000; margin: 0 atuo; max-width:100%;">
 		</div>
-		<ul class="staffs">
-			<li ng-repeat="staff in ::staffs">
-				<span class="name">{{staff.name}}</span>
-				<a class="button" href="tel:{{staff.telnum}}">TEL</a>
-				<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
-			</li>
-		</ul>
+
+		<div>
+			<ul>
+				<li ng-click="navi.pushPage('views/members/hot_access.html')">HOT ACCESS</li>
+				<li ng-click="navi.pushPage()">OTHER</li>
+			</ul>
+
+		</div>
+	</div>
 
 	<ons-list modifier="inset" style="margin-top: 20px;">
 		<ons-list-header class="title">会員情報</ons-list-header>
@@ -68,4 +55,3 @@
 	</ons-list>
 
 </ons-page>
-
