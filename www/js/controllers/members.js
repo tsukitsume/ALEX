@@ -11,10 +11,12 @@ app.controller('MembersController', function($scope, $http, SharedData)
 {
 	$scope.loggedin = isLoggedIn();
 	
+	/*
 	if (!$scope.loggedin)
 	{
 		navi.popPage();
 	}
+	*/
 
 	ons.ready(function()
 	{
