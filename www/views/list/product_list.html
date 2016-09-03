@@ -24,7 +24,7 @@
 			<h3>
 					{{data.name}}
 			</h3>
-			<p class="price price_primary">{{data.price_primary}}</p>
+			<p class="price price_primary">{{data.price_primary | currency:undefined:0}}</p>
 		</ons-list-item>
 
 		<!-- #list_end -->

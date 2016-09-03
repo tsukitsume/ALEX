@@ -1,0 +1,28 @@
+<ons-page ng-controller="HotAccessController" class="hot_access">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left">
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+		<div class="center">HOT ACCESS</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<div class="contents">
+
+		<ul class="staffs">
+			<li ng-repeat="staff in ::staffs">
+				<span class="name">{{staff.name}}</span>
+				<span class="buttons">
+					<a class="button" href="tel:{{staff.telnum}}">TEL</a>
+					<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
+				</span>
+			</li>
+		</ul>
+	</div>
+
+</ons-page>
+
