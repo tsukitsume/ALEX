@@ -19,7 +19,7 @@ app.controller('MembersController', function($scope, $http, SharedData)
 
 	ons.ready(function()
 	{
-		$("#bcTarget").barcode("1234567890128", "code128");
+		$("#bcTarget").barcode("1234567890128", "code128", {output: 'svg'});
 		console.log('code');
 	});
 });
