@@ -1,8 +1,13 @@
-<ons-page ng-controller="MarketListController" id="marketList" style="height:100%;">
+<ons-page ng-controller="MarketListController" class="market_list" id="marketList" style="height:100%;">
 
 	<!-- toolbar -->
 	<ons-toolbar>
-		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
 		<div class="center">貴金属相場情報</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
@@ -103,13 +108,15 @@
 					※ブランド問わず、1g から買い取り致します。
 				</p>
 
-				<h3 style="width: 100%; fontweight: bold; text-align: center; color: red;">
+				<h3 style="margin-top:4em; max-width:100%; fontweight:bold; text-align: center; color: #fff; borde-radius: 10px; background-color: #c20d00;">
 					▼&nbsp;過去の情報&nbsp;▼
 				</h3>
 			</div>
 			
 			
-			<div ng-if="!$first"
+			<div
+				class="list"
+				ng-if="!$first"
 				ng-click="showDetailPage(data)"
 				modifier="tappable">
 				<h3>

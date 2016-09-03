@@ -33,7 +33,7 @@ app.controller('SignupController', function($scope, $http, SharedData)
 		});
 		// password
 
-		navi.pushPage('signup_confirm.html');
+		navi.pushPage('views/auth/signup_confirm.html');
 	};
 });
 
@@ -52,15 +52,15 @@ app.controller('SignupConfirmController', function($scope, $http, SharedData)
 		$.post(AJAX_SIGNUP, $scope.data)
 		.done(function (response)
 		{
-			localStorage.setItem(STORAGE_ID,          response.id);
+			localStorage.setItem(STORAGE_NUMBER,      response.number);
 			localStorage.setItem(STORAGE_ONETIME_KEY, response.onetime_key);
 			localStorage.setItem(STORAGE_POINT,       response.point);
 			localStorage.setItem(STORAGE_CREATED_AT,  response.created_at);
 			ons.notification.alert({
 				title: 'サインアップ',
-				messageHTML: "サインアップしました<br>あなたの会員番号は  " + response.id + "番です<br>詳細・ポイントは右上の「MyCard」よりご確認いただけます",
+				messageHTML: "サインアップしました<br>あなたの会員番号は  " + response.number + "番です<br>詳細・ポイントは右上の「MyCard」よりご確認いただけます",
 			});
-			navi.resetToPage('top.html');
+			navi.resetToPage('views/top.html');
 		})
 		.fail(function (qxhr, status, error)
 		{
@@ -92,15 +92,19 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 	if (userData)
 	{
 		$scope.userData  = userData;
-		$scope.id        = localStorage.getItem(STORAGE_ID);
+		$scope.number    = localStorage.getItem(STORAGE_NUMBER);
 		$scope.point     = localStorage.getItem(STORAGE_POINT);
 		// $scope.qrcode         = true;
 	}
 
+
+	console.log($scope.loggedin.number);
+	console.log($scope.loggedin.onetime_key);
+
 	ons.ready(function()
 	{
 		$.post(AJAX_LOGGEDIN, {
-			id         : $scope.loggedin.id,
+			number     : $scope.loggedin.number,
 			onetime_key: $scope.loggedin.onetime_key,
 		})
 		.done(function (response)
@@ -113,14 +117,14 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 			}
 			else
 			{
-				localStorage.setItem(STORAGE_ID,          response.id);
+				localStorage.setItem(STORAGE_NUMBER,      response.number);
 				localStorage.setItem(STORAGE_ONETIME_KEY, response.onetime_key);
 				localStorage.setItem(STORAGE_POINT,       response.point);
 				localStorage.setItem(STORAGE_CREATED_AT,  response.created_at);
 				
 				// ポイント等を更新する
-				$scope.id    = localStorage.getItem(STORAGE_ID);
-				$scope.point = localStorage.getItem(STORAGE_POINT);
+				$scope.number = localStorage.getItem(STORAGE_NUMBER);
+				$scope.point  = localStorage.getItem(STORAGE_POINT);
 				$scope.$apply();
 			}
 		})
@@ -150,16 +154,16 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
  */
 app.controller('LoginController', function($scope, $http, SharedData)
 {
-	var userId = localStorage.getItem(STORAGE_ID);
-	if (userId)
+	var userNumber = localStorage.getItem(STORAGE_NUMBER);
+	if (userNumber)
 	{
-		this.id = userId;
+		this.number = userNumber;
 	}
 
 	$scope.doLogin = function (data)
 	{
 		var parameter = {
-			id      : data.id,
+			number  : data.number,
 			password: data.password,
 		};
 
@@ -169,7 +173,7 @@ app.controller('LoginController', function($scope, $http, SharedData)
 		{
 			if (response)
 			{
-				localStorage.setItem(STORAGE_ID,          response.id);
+				localStorage.setItem(STORAGE_NUMBER,      response.number);
 				localStorage.setItem(STORAGE_ONETIME_KEY, response.onetime_key);
 				localStorage.setItem(STORAGE_POINT,       response.point);
 				localStorage.setItem(STORAGE_CREATED_AT,  response.created_at);

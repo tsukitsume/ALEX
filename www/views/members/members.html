@@ -1,19 +1,35 @@
-<ons-page ng-controller="MembersController">
+<ons-page ng-controller="MembersController" class="members">
 
 	<!-- toolbar -->
 	<ons-toolbar>
-		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="left">
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
 		<div class="center">MY CARD</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
 
-	<div>
-		<span>会員専用コンテンツ01</span>
-	</div>
-		<h2>HOT ACCESS</h2>
-		<h3>ALEX</h3>
+	<div class="contents news">
+		<ul>
+			<li>HOT ACCESS</li>
+			<li>OTHER</li>
+		</ul>
 
-		<div id="bcTarget" style="width: 100%; height: 200px; border: 1px solid #000;">
+    <div style="max-width:100%;">
+        <canvas id="myChart" height="250"></canvas>
+    </div>
+
+	<div class="button" ng-click="getChart()" >グラフ</div>
+
+	<div class="button" ng-click="drawChart('gold')" >金</div>
+	<div class="button" ng-click="drawChart('platinum')" >プラチナ</div>
+	<div class="button" ng-click="drawChart('shilver')" >銀</div>
+	<div class="button" ng-click="drawChart()" >全て</div>
+
+
+		<div id="bcTarget" style="padding: 1em;border: 1px solid #000; margin: 0 atuo; max-width:100%;">
 		</div>
 		<ul class="staffs">
 			<li ng-repeat="staff in ::staffs">

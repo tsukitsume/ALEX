@@ -1,17 +1,22 @@
 <ons-page ng-controller="HistoryController" class="history">
 	<ons-toolbar>
-		<div class="left"><ons-back-button>Back</ons-back-button></div>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
 		<div class="center">歴史</div>
 	</ons-toolbar>
 
-	<div>
+	<div class="contents">
 		<h1>沿革</h1>
 
 		<h2>京都の老舗の貴金属宝飾店</h2>
 		<p>
+			<img src="images/history/AX-3508.jpg" class="right">
 			創業明治45年(1912)、当時は、社会全体が貧しい時代でありましたが、初代 和田駒吉(1883-1962)が、
 			時代の華であった蓄音機・時計・貴金属類の販売を中心とした、現和田貴金属宝飾店を創業しました。
-			<img src="images/history/AX-3508.jpg">
 		</p>
 
 		<p>
@@ -20,10 +25,10 @@
 		</p>
 	
 		<p>
+			<img src="images/history/AX-3519.jpg" class="right">
 			時代と共に“和田”に於いても、貴金属・宝飾・時計の扱い量も増え、誠実な商いにより、
 			京都での信用も着実に上昇してゆきました。そして大東亜戦争（第二次世界大戦）直前には、
 			ヒスイやダイヤモンドの帯留等も売れる状況になって参りました。
-			<img src="images/history/AX-3519.jpg">
 		</p>
 
 		<p>
@@ -32,10 +37,10 @@
 		</p>
 
 		<p>
+			<img src="images/history/info_pic3.jpg" class="right">
 			しかし、二代目 和田賢司(1912-2009)は、すでに昭和初期に貴金属職人修業を経て、
 			家業に従事していた為、貫金属類の加工・販売、又、買入・供出、そして時計販売等に
 			活躍しはじめておりました。
-		<img src="images/history/info_pic3.jpg">
 		</p>
 
 		<p>
@@ -53,10 +58,10 @@
 		</p>
 
 		<p>
+			<img src="images/history/info_pic4.jpg" class="right">
 			昭和48年(1973)には貿易自由化がなされ、弊社もベルギーのダイヤモンド研磨会社より、
 			直接ダイヤモンドを輸入する道をつけ、又、昭和49年(1974)よりは、"資産保全"という観点より、
 			金地金の売買もスタート致しました。
-			<img src="images/history/info_pic4.jpg">
 		</p>
 
 		<!-- -->
@@ -69,22 +74,22 @@
 		</p>
 
 		<p>
+			<img src="images/history/info_pic5.jpg" class="right">
 			特に昭和56年(1981)よりは、積極的に海外とのパイプを拡げ、ベルギーは勿論、香港、オーストラリア、
 			イタリア、フランス、ギリシア、スイス、タイ等の専門業者と直接取引を拡げ、国際価格による、
 			本当のプロが扱う品質の宝石並に宝飾品を扱う、いわば世界のプロの仲間入りを果たしました。
 			又、同時に心と心の取引を心がけ、業者の方々とは家族ぐるみのつき合いに発展して参りました。
 			又、バブル期前後(1986～1994)には、日本に於いての世界的なオークション商品の流通、
 			鑑定にも参画する機会に恵まれ、無形の財産も得ました。
-			<img src="images/history/info_pic5.jpg">
 		</p>
 
 		<p>
+			<img src="images/history/info_pic6.jpg" class="right">
 			平成2年(1990)には、今までの卸売業がハードからソフトへの時代の変化の中で役割が滅少する
 			であろうと考え、小売部門(株)アレックスを創業致しました。
 			21世紀の宝飾屋を考える時、より高い品質の商品も大切でありますが、一番大事なのは、
 			お客様と私共とが、より深い人間関係を築き、共に人生を学ばせていただき、そして、育てて
 			いただく事こそが、本当の姿であり、小売業の醍醐味であり、又家業の最終目的であると考え至りました。
-			<img src="images/history/info_pic6.jpg">
 		</p>
 
 		<p>
@@ -94,6 +99,7 @@
 		</p>
 
 		<p>
+			<img src="images/history/info_pic7.jpg" class="right">
 			そして、その手段といたしまして、品質・デザイン・着けごこちを考えたジュエリーの開発はもちろん、
 			文化サロン、VIPツアー(国内、海外旅行)、又、アニバーサリーセール等、いろいろな行事(弊社100年誌参照)を
 			企画し開催する事によりまして、時代を味わいつつ、本質を忘れない…、又、小さくとも控えめな、
@@ -101,9 +107,8 @@
 			これから21世紀におきましても『商品』、『心』共々に、時代をリードしてゆきつつ、お客様とアレックスの出会いが
 			真の喜ぴにつながりますよう、世界とのネットワークの中で各々努カを重ねますので、何卒末永く御指導、
 			御鞭撻賜りますよう心よりお願い申し上げます。
-			<img src="images/history/info_pic7.jpg">
-			<img src="images/history/AX-9030B.jpg">
-			<img src="images/history/DSC_0127.jpg">
+			<img src="images/history/AX-9030B.jpg" class="right">
+			<img src="images/history/DSC_0127.jpg" class="right">
 		</p>
 
 		<!-- <img src="images/history/info_pic1.jpg"> -->

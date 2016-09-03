@@ -1,16 +1,24 @@
-<ons-page ng-controller="ProductListController" id="productList" style="height:100%;">
+<ons-page ng-controller="ProductListController" id="productList" style="height:100%;" class="product_list" >
 
 	<!-- toolbar -->
 	<ons-toolbar>
-		<div class="left" ><ons-back-button>Back</ons-back-button></div>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
+
 		<div class="center">{{page_title}}</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
 
 	<ons-list id="product_list_ul">
 
-		<ons-list-item class="product_list" ng-repeat="data in dataList"
-			modifier="tappable" class="list__item__line-height"
+		<ons-list-item
+			class="product_list list__item__line-height"
+			ng-repeat="data in dataList"
+			modifier="tappable"
 			ng-click="showDetailPage(data)">
 			<img class="thumbnail" src="{{BASE_URL}}{{data.thumbnail}}">
 			<h3>

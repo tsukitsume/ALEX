@@ -3,12 +3,14 @@
  * NewsList
  * ====================
  */
-app.controller('NewsListController', function($scope, $http, SharedData)
+app.controller('NewsListController', function($scope, $sce, $http, SharedData)
 {
 	$scope.dataList = [];
 	$scope.shop_info = SHOP_INFO;
 	var loading = false;
 	var all_data_loaded = false;
+
+	var first_article = true;
 
 	function readItems()
 	{
@@ -41,6 +43,11 @@ app.controller('NewsListController', function($scope, $http, SharedData)
 			}
 			for (key in response)
 			{
+				if (first_article)
+				{
+					$scope.article = $sce.trustAsHtml(response[key].body);
+					first_article = false;
+				}
 				$scope.dataList.push(response[key]);
 			}
 			$scope.$apply();
@@ -82,10 +89,12 @@ app.controller('NewsListController', function($scope, $http, SharedData)
  * News
  * ====================
  */
-app.controller('NewsController', function($scope, SharedData)
+app.controller('NewsController', function($scope, $sce, SharedData)
 {
 	$scope.shop_info = SHOP_INFO;
 	$scope.data = SharedData.get();
+
+	$scope.article = $sce.trustAsHtml($scope.data.body);
 });
 
 /**
@@ -192,7 +201,7 @@ app.controller('ProductController', function($scope, SharedData) {
 		console.log($scope.loggedin.onetime_key);
 		$.post(AJAX_LIKE, {
 			product_id : id,
-			id         : $scope.loggedin.id,
+			number     : $scope.loggedin.number,
 			onetime_key: $scope.loggedin.onetime_key,
 		})
 		.done(function (response)
