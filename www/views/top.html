@@ -23,10 +23,12 @@
 		<div id="main_image">
 			<ul>
 				<li ng-repeat="data in menuMain"
-				ng-click="navi.pushPage(data.page)"modifier="tappable" 
+				ng-click="navi.pushPage(data.page)" modifier="tappable" 
 					style="background-image: url(images/top/{{data.background}});">
-					{{data.name}}<br>
-					<span class="jp">-&nbsp;{{data.jpname}}&nbsp;-</span>
+					<div class="title">
+						{{data.name}}<br>
+						<span class="jp">-&nbsp;{{data.jpname}}&nbsp;-</span>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -49,5 +51,12 @@
 				</li>
 			</ul>
 		</div>
+	</div>
+
+
+	<div id="special" ng-click="pushSpecialPage(special)"
+				   style="background-image: url({{BASE_URL}}{{special.main_image}});">
+		<p ng-bind="special.title">
+		</p>
 	</div>
 </ons-page>

@@ -16,25 +16,6 @@
 /*
  *top
  */
-#main_image,
-#menu_main,
-#menu_sub
-{
-	font-family: "ipaexm";
-	padding:0;
-	margin: 0;
-	list-style: none;
-	overflow: hidden;
-	width: 100%;
-	position: absolute;
-	box-sizing: content-box;
-}
-#main_image
-{
-	color: #fff;
-	font-weight: bold;
-	text-shadow: 1px 1px 1px #999;
-}
 
 
 /*
@@ -57,6 +38,11 @@
 /*
  * news
  */
+.news_list h3
+{
+	background: none;
+}
+
 .news_list .content
 {
 	display: none;
@@ -114,6 +100,11 @@
 .market_list .buttons .button.platinum { background: #e5e4e2; border-color: #ccc; color: #666; }
 .market_list .buttons .button.silver   { background: #c0c0c0; border-color: #ccc; }
 
+.market_list h3
+{
+	background: none;
+}
+
 
 /*
  * product
@@ -121,11 +112,13 @@
 .product_list
 {
 	overflow: hidden;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 .product_list .thumbnail
 {
 	margin-top: 1em;
-	max-width: 20%;
+	max-width: 25%;
 	border: 1px solid #cecece;
 	display: block;
 	float: left;
@@ -134,15 +127,19 @@
 .product_list h3,
 .product_list .price
 {
+	background: none;
 	box-sizing: content-box;
 	clear: right;
 	float: right;
-	width: 65%;
-	margin: 20px;
+	max-width: 65%;
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
 	line-height: 1.5;
 }
 .product_list h3
 {
+	clear: none;
 	margin-bottom: 0;
 }
 .product_list .price_primary,
@@ -157,10 +154,11 @@
 {
 	font-weight: bold;
 	color: red;
+	font-size: 110%;
 }
 .product .price_secondary
 {
-	font-size: 85%;
+	font-size: 95%;
 }
 .product
 {

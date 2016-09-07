@@ -5,6 +5,7 @@
  */
 app.controller('TopController', function($scope, $http, SharedData, $timeout)
 {
+	$scope.BASE_URL = BASE_URL;
 	$scope.loggedin = isLoggedIn();
 
 	$scope.menuMain = MENUS;
@@ -12,9 +13,40 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 	var LI_HALF   = LI_HEIGHT / 2;
 	var LI_COUNT  = $scope.menuMain.length;
 
+	$.post(AJAX_SPECIAL, {})
+	.done(function (response)
+	{
+		console.log(response);
+		if (response)
+		{
+			$scope.special = response;
+			$scope.$apply();
+		}
+	})
+	.fail(function (qxhr, status, error)
+	{
+	})
+	.always(function ()
+	{
+	});
+
+	$scope.pushSpecialPage = function(data)
+	{
+		console.log('special');
+		SharedData.set(data);
+		navi.pushPage('views/special.html');
+	}
+
+
 	ons.ready(function()
 	{
 		console.log('top');
+		var BAN_HEIGHT = $('#special').height();
+
+		if ($scope.loggedin)
+		{
+			navi.pushPage('views/mypage.html');
+		}
 
 		$timeout(function()
 		{
@@ -22,7 +54,8 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 			var slideY = LI_HEIGHT;
 
 			$('#menu_sub').css({height: (LI_COUNT-1) * LI_HEIGHT});
-			$('#menu_main').css({bottom: (LI_COUNT-1) * LI_HEIGHT});
+			$('#menu_sub').css({bottom: BAN_HEIGHT});
+			$('#menu_main').css({bottom: (LI_COUNT-1) * LI_HEIGHT + BAN_HEIGHT});
 			$('#menu_sub').scrollTop(LI_HEIGHT);
 			var IMAGE_HEIGHT = $('#main_content').height() - $('#menu_sub').height() - LI_HEIGHT;
 			$('#main_image').height( IMAGE_HEIGHT );

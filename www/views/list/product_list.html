@@ -20,8 +20,9 @@
 			ng-repeat="data in dataList"
 			modifier="tappable"
 			ng-click="showDetailPage(data)">
-			<img class="thumbnail" src="{{BASE_URL}}{{data.thumbnail}}">
+			<img class="thumbnail" src="{{data.thumbnail}}">
 			<h3>
+					<ons-icon icon="ion-android-arrow-dropright-circle" style="color: #c20d00;" aria-hidden="true"></ons-icon>&nbsp;
 					{{data.name}}
 			</h3>
 			<p class="price price_primary">{{data.price_primary | currency:undefined:0}}</p>

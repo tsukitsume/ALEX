@@ -55,12 +55,40 @@
 {
 	height: 14.2857143%;
 }
+
+
+#main_image,
+#menu_main,
+#menu_sub
+{
+	font-family: "ipaexm";
+	padding:0;
+	margin: 0;
+	list-style: none;
+	overflow: hidden;
+	width: 100%;
+	position: absolute;
+	box-sizing: content-box;
+}
+#main_image
+{
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #666;
+}
+
+#main_image li .title
+{
+	position: absolute;
+	line-height: 1.5;
+	margin-top: 10px;
+}
 #main_image ul li
 {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	box-shadow: 0 0 14px 2px rgba(125,125,125,0.5) inset;
+	box-shadow: 0 0 14px 3px rgba(125,125,125,0.5) inset;
 }
 
 /* clickable */
@@ -104,4 +132,32 @@
   -moz-box-shadow: 0px 2px 3px -3px rgba(0,0,0,0.6);
 }
 
+#special
+{
+	position: absolute;
+	z-index: 99;
+	font-weight: bold;
+	box-sizing: border-box;
+
+	box-shadow: 0 0 2px rgba(200,200,200,1.0) inset;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center right;
+
+	width: 100%;
+	height: 50px;
+	bottom: 0; /* 40x7 + 20px */
+}
+#special:active
+{
+	opacity: 0.4;
+}
+#special p
+{
+	padding: 4px;
+	font-size: 80%;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.9), 0px 0px 1px rgba(0,0,0,0.2);
+	color: #ffffff;
+}
 

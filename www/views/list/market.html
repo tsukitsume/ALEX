@@ -68,13 +68,19 @@
 		</p>
 		
 		<h2 class="">NY(コメックス)金相場</h2>
-		<p>
+		<p ng-if="data.market_gold">
 			{{data.market_gold | currency: '$'}}
 		</p>
-		
+		<p ng-if="!data.market_gold">
+			-
+		</p>
+
 		<h2 class="">NY白金相場</h2>
-		<p>
+		<p ng-if="data.market_platinum">
 			{{data.market_platinum | currency: '$'}}
+		</p>
+		<p ng-if="!data.market_platinum">
+			-
 		</p>
 		
 	</div>

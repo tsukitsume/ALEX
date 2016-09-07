@@ -6,14 +6,14 @@ const AJAX_BASE_URL = SECURE_URL + "rest/app/";
 
 const AJAX_SIGNUP    = AJAX_BASE_URL + "signup.json";    // サインアップ
 const AJAX_LOGIN     = AJAX_BASE_URL + "login.json";     // ログイン
-const AJAX_LOGGEDIN  = AJAX_BASE_URL + "loggedin.json";   // ログインのチェック
+const AJAX_LOGGEDIN  = AJAX_BASE_URL + "loggedin.json";  // ログインのチェック
 const AJAX_CHANGE_PW = AJAX_BASE_URL + "change_pw.json"; // パスワード変更
 const AJAX_MARKET    = AJAX_BASE_URL + "market.json";    // 貴金属相場
 const AJAX_NEWS      = AJAX_BASE_URL + "news.json";      // 新着情報
 const AJAX_PRODUCT   = AJAX_BASE_URL + "product.json";   // 商品情報
 const AJAX_LIKE      = AJAX_BASE_URL + "like.json";      // 「いいね」ボタン
-const AJAX_QR        = AJAX_BASE_URL + "qr.json";      // QRコード
-const AJAX_CHART     = AJAX_BASE_URL + "chart.json";      // 貴金属相場の集計
+const AJAX_QR        = AJAX_BASE_URL + "qr.json";        // QRコード
+const AJAX_SPECIAL   = AJAX_BASE_URL + "special.json";   // スペシャルコンテンツ
 
 const IMG_DIR        = BASE_URL + "images";
 
@@ -153,6 +153,18 @@ var getUserData = function()
 	
 	return false;
 }
+
+/**
+ * ====================
+ * SpecialController
+ * ====================
+ */
+app.controller('SpecialController', function($scope, SharedData, $sce)
+{
+	$scope.data = SharedData.get();
+	$scope.article = $sce.trustAsHtml($scope.data.body);
+});
+
 
 var isLoggedIn = function ()
 {

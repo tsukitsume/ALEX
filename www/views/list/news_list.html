@@ -16,8 +16,8 @@
 
 		<!-- first -->
 		<ons-list-item ng-if="$first"
-			class="news_list" ng-repeat="data in dataList"
-			modifier="tappable" class="list__item__line-height"
+			ng-repeat="data in dataList"
+			modifier="tappable" class="news_list list__item__line-height"
 			>
 				<div class="news">
 				<h1 class="">
@@ -44,19 +44,24 @@
 					</a>
 				</li>
 			</ul>
+
+				<h3 style="margin-top:4em; max-width:100%; fontweight:bold; text-align: center; color: #fff; borde-radius: 10px; background-color: #c20d00;">
+					▼&nbsp;過去の情報&nbsp;▼
+				</h3>
+
 		</ons-list-item>
 
 		<ons-list-item
-			class="list list__item__line-height"
+			class="news_list list__item__line-height"
 			ng-if="!$first"
    			ng-repeat="data in dataList"
 			modifier="tappable"
 			ng-click="showDetailPage(data)"
 			>
-			<div>
+			<h3>
+				<ons-icon icon="ion-android-arrow-dropright-circle" style="color: #c20d00;" aria-hidden="true"></ons-icon>&nbsp;
 				{{data.title}}
-			</div>
-			<span style="margin-left: 10px;"></span>
+			</h3>
 		</ons-list-item>
 		
 		<!-- #list_end -->

@@ -50,7 +50,10 @@
 		
 		<dl>
 			<dt>TEL:</dt>
-				<dd ng-bind="::shop_info.tel"></dd>
+				<dd>
+					<a href="tel:{{shop_info.telnum}}" ng-bind="::shop_info.tel">
+					</a>
+				</dd>
 			<dt>FAX:</dt>
 				<dd ng-bind="::shop_info.fax"></dd>
 			<dt>MAIL:</dt>

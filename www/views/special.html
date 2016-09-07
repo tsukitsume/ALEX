@@ -1,0 +1,43 @@
+<ons-page ng-controller="SpecialController" class="special">
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
+
+		<div class="center" ng-bind="::data.title"></div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<div class="contents">
+		<div class="latest">最新情報</div>
+		<h1 ng-bind="::data.title">
+		</h1>
+
+		<article class="news_article" ng-bind-html="article">
+		</article>
+
+		<h3>お問い合わせ</h3>
+		<ul class="button_group three">
+			<li>
+				<a class="button icon" href="tel:{{shop_info.telnum}}">
+					<img src="images/icon/call_s.png" alt="電話を掛ける" />
+					<span>CALL</span>
+				</a>
+			</li>
+			<li>
+				<a class="button icon" href="mailto:{{shop_info.mail}}?subject=「{{data.title}}」のお問い合わせ・出席について&body=(氏名をお忘れなく)">
+					<img src="images/icon/mail_s.png" alt="メール" />
+					<span>MAIL</span>
+				</a>
+			</li>
+		</ul>
+
+	</div>
+
+
+</ons-page>
