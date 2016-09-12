@@ -11,6 +11,7 @@ app.controller('MembersController', function($scope, $http, SharedData)
 {
 	$scope.loggedin = isLoggedIn();
 	
+	$scope.staffs = STAFFS;
 	/*
 	if (!$scope.loggedin)
 	{

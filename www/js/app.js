@@ -26,12 +26,12 @@ const STORAGE_CREATED_AT    = "created_at";
 const BARCODE_TYPE = "code128";
 
 const MENUS = [
-	{ page: 'views/shop.html',              name: 'Shop Information',      jpname: '会社概要',   background: 'Unknown-1.jpeg', },
+	{ page: 'views/shop.html',              name: 'Shop Information',      jpname: '会社案内',   background: 'A-1006.jpg', },
 	{ page: 'views/list/market_list.html',  name: 'Precious Metal Market', jpname: '貴金属相場', background: 'IMG_2012.JPG',   },
 	{ page: 'views/list/news_list.html',    name: 'Good News',             jpname: '行事予定',   background: 'IMG_0606.JPG',   },
-	{ page: 'views/list/product_list.html', name: 'New Arrival',           jpname: '商品',       background: 'Unknown.jpeg',   },
-	{ page: 'views/auth/auth.html',         name: 'Be A Member',           jpname: '会員登録',           background: 'w-102.jpg',      },
+	{ page: 'views/list/product_list.html', name: 'New Arrival',           jpname: '新商品',       background: 'AX-2.png',   },
 	{ page: 'views/members/members.html',   name: 'Members Page',          jpname: '会員専用コンテンツ', background: 'images.jpeg',    },
+	{ page: 'views/auth/auth.html',         name: 'Be A Member',           jpname: '会員登録',           background: 'w-102.jpg',      },
 ];
 
 const LOGGED_IN_MENUS = [

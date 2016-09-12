@@ -12,6 +12,10 @@
 	</ons-toolbar>
 	<!-- // toolbar -->
 
+	<div>
+		<img src="images/member/card.jpg" style="max-width:100%;">
+	</div>
+
 	<div id="card">
 		<img src="images/logo.png" class="logo">
 		<div class="numbers">
@@ -30,30 +34,30 @@
 
 	</div>
 
-	<ons-list modifier="inset" style="margin-top: 20px;">
+	<ons-list modifier="inset" style="margin-top: 20px;" ng-if="userData">
 		<ons-list-header class="title">会員情報</ons-list-header>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.name">
 			お名前: {{::userData.name}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.kana">
 			フリガナ: {{::userData.kana}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.birthday">
 			お誕生日: {{::userData.birthday|date:'yyyy年M月d日'}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.zip">
 			郵便番号: {{::userData.zip}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.address1">
 			ご住所: {{::userData.address1}} {{::userData.address2}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.tel">
 			お電話番号(携帯可): {{::userData.tel}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.wedding_anniversary">
 			結婚記念日: {{::userData.wedding_anniversary|date:'yyyy年M月d日'}}
 		</ons-list-item>
-		<ons-list-item>
+		<ons-list-item ng-if="userData.is_receive_mail">
 			メール・ラインでのご案内: {{::userData.is_receive_mail}}
 		</ons-list-item>
 	</ons-list>

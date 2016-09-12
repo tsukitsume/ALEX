@@ -7,51 +7,33 @@
 				&times;
 			</ons-toolbar-button>
 		</div>
-		<div class="center">MY CARD</div>
+		<div class="center">会員専用コンテンツ</div>
 	</ons-toolbar>
 	<!-- // toolbar -->
 
-	<div class="contents">
 
-		<div>
+	<div style="margin: 0;">
+		<img src="images/member/alex20-416.jpg" style="max-width:100%;">
+	</div>
 
-		</div>
+	<div class="contents" style="margin-top: 0;">
+
+		<h2>HOT ACCESS</h2>
+		<ul class="staffs">
+			<li ng-repeat="staff in ::staffs">
+				<span class="name">{{staff.name}}</span>
+				<span class="buttons">
+					<a class="button" href="tel:{{staff.telnum}}">TEL</a>
+					<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
+				</span>
+			</li>
+		</ul>
 
 		<div>
 			<ul>
 				<li ng-click="navi.pushPage('views/members/hot_access.html')">HOT ACCESS</li>
 				<li ng-click="navi.pushPage()">OTHER</li>
 			</ul>
-
 		</div>
 	</div>
-
-	<ons-list modifier="inset" style="margin-top: 20px;">
-		<ons-list-header class="title">会員情報</ons-list-header>
-		<ons-list-item>
-			お名前: {{::userData.name}}
-		</ons-list-item>
-		<ons-list-item>
-			フリガナ: {{::userData.kana}}
-		</ons-list-item>
-		<ons-list-item>
-			お誕生日: {{::userData.birthday}}
-		</ons-list-item>
-		<ons-list-item>
-			郵便番号: {{::userData.zip}}
-		</ons-list-item>
-		<ons-list-item>
-			ご住所: {{::userData.address1}} {{::userData.address2}}
-		</ons-list-item>
-		<ons-list-item>
-			お電話番号(携帯可): {{::userData.tel}}
-		</ons-list-item>
-		<ons-list-item>
-			結婚記念日: {{::userData.wedding_anniversary}}
-		</ons-list-item>
-		<ons-list-item>
-			メール・ラインでのご案内: {{::userData.is_receive_mail}}
-		</ons-list-item>
-	</ons-list>
-
 </ons-page>
