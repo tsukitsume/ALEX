@@ -66,9 +66,8 @@ const SHOP_INFO = {
 };
 
 const STAFFS = [
-	{ name: 'JUNJI WADA', line: 'example', telnum: '0000000000', },
-	{ name: 'JUNJI WADA', line: 'example', telnum: '0000000000', },
-	{ name: 'JUNJI WADA', line: 'example', telnum: '0000000000', },
+	{ name: 'JUNJI WADA', line: '19520731alex', telnum: '0000000000', },
+
 	// { name: '', id: '', tel: '', telnum: '', }
 ];
 
