@@ -175,7 +175,7 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 					barWidth:  2,
 					barHeight: 80,
 					fontSize:  15,
-					output: 'svg',
+					output: 'css',
 				});
 
 
