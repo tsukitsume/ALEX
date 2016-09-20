@@ -22,6 +22,7 @@ li height 40px;
 .button
 {
 	font-family: "ipaexm", 'OpenBaskeville', "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "ＭＳ Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+	margin-bottom: 1em;
 }
 h1
 {
@@ -209,7 +210,7 @@ td {
 	width: 100%;
 	display:block;
 	text-align: center;
-	text-shadow: 0 4px 4xp 0 #000;
+	text-shadow: 0 4px 4px 0 #000;
 }
 .disabled,
 .inactive

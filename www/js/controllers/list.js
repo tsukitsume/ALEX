@@ -282,7 +282,6 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 		$.post(AJAX_MARKET, data)
 		.done(function (response)
 		{
-			console.log(response);
 			if (response == 'nomore')
 			{
 				all_data_loaded = true;
@@ -324,6 +323,8 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 		$.post(AJAX_CHART)
 		.done(function (response)
 		{
+			console.log('chart');
+			console.log(response);
 			var labels     = [];
 			var golds      = [];
 			var platinums  = [];

@@ -17,9 +17,11 @@ app.controller('AuthController', function($scope, $http, SharedData)
 app.controller('SignupController', function($scope, $http, SharedData)
 {
 	var userData = getUserData();
-	console.log(userData);
+	console.log(userData.birthday);
 	if (userData)
 	{
+		if (userData.birthday) userData.birthday = new Date(userData.birthday);
+		if (userData.birthday) userData.wedding_anniversary = new Date(userData.wedding_anniversary);
 		this.userData = userData;
 	}
 
@@ -74,6 +76,68 @@ app.controller('SignupConfirmController', function($scope, $http, SharedData)
 		});
 	};
 });
+
+/**
+ * ====================
+ * MyPage
+ * @ajax res 'differ_old_password' => 現在のパスワードが異なる(ログイン出来ない)
+ * @ajax res 'differ_new_password' => 新しいパスワードと確認用が異なる(原則起きない)
+ * ====================
+ */
+app.controller('PasswordChangeController', function($scope, $http, SharedData)
+{
+	$scope.number = localStorage.getItem(STORAGE_NUMBER);
+	$scope.doPasswordChange = function(data)
+	{
+		modal.show();
+		data.number = $scope.number;
+
+		console.log(data);
+		$.post(AJAX_CHANGE_PW, data)
+		.done(function (response)
+		{
+			console.log(response);
+
+			if (response == 'differ_old_password')
+			{
+				ons.notification.alert({
+					title: 'エラー',
+					messageHTML: "現在のパスワードが違います",
+				});
+			}
+			else if (response == 'differ_new_password')
+			{
+				ons.notification.alert({
+					title: 'エラー',
+					messageHTML: "新しいパスワードが、確認用のパスワードと異なります",
+				});
+			}
+			else
+			{
+				localStorage.setItem(STORAGE_NUMBER,      response.number);
+				localStorage.setItem(STORAGE_ONETIME_KEY, response.onetime_key);
+				localStorage.setItem(STORAGE_POINT,       response.point);
+				localStorage.setItem(STORAGE_CREATED_AT,  response.created_at);
+
+				ons.notification.alert({
+					title: 'パスワードを変更',
+					messageHTML: "パスワードを変更しました",
+				});
+				navi.resetToPage('views/top.html');
+			}
+		})
+		.fail(function (qxhr, status, error)
+		{
+			console.log(qxhr);
+			console.log(error);
+		})
+		.always(function ()
+		{
+			modal.hide();
+		});
+	};
+});
+
 
 /**
  * ====================
@@ -153,8 +217,19 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 	
 	$scope.logout = function()
 	{
-		logOut();
-		navi.resetToPage('views/top.html');
+		ons.notification.confirm({
+			title: 'ログアウト',
+			message: 'ログアウトしてもよろしいですか?',
+			buttonLabels: ['キャンセル', 'ログアウトする'],
+			callback: function(answer)
+			{
+				if (answer)
+				{
+					logOut();
+					navi.resetToPage('views/top.html');
+				}
+			},
+		});
 	}
 }]);
 
@@ -166,6 +241,7 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
  */
 app.controller('LoginController', function($scope, $http, SharedData)
 {
+	$scope.shop_info = SHOP_INFO;
 	var userNumber = localStorage.getItem(STORAGE_NUMBER);
 	if (userNumber)
 	{

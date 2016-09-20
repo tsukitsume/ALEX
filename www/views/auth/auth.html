@@ -21,9 +21,11 @@
 		</div>
 
 
-		<div ng-if="!loggedin">
-			<ons-button ng-click="navi.pushPage('views/auth/login.html')">会員の方</ons-button>
-			<ons-button ng-click="navi.pushPage('views/auth/signup.html')">未会員の方</ons-button>
+		<div ng-if="!loggedin" style="margin-bottom: 2em">
+			<h3>会員の方</h3>
+			<ons-button modifier="large" ng-click="navi.pushPage('views/auth/login.html')">ログイン</ons-button>
+			<h3>未会員の方</h3>
+			<ons-button modifier="large" ng-click="navi.pushPage('views/auth/signup.html')">会員登録</ons-button>
 		</div>
 
 

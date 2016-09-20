@@ -245,7 +245,8 @@
 	background: url(../images/line.png) no-repeat bottom center;
 	background-size: 240px 1px;
 	box-shadow: 0 0 14px 16px rgba(200,200,200,0.1) inset;
-	text-align: center;
+	/* text-align: center; */
+	text-align: left;
 }
 .members li:active
 {
@@ -263,13 +264,33 @@
 	background: url(../images/line.png) no-repeat bottom center;
 	background-size: 240px 1px;
 	box-shadow: 0 0 14px 16px rgba(200,200,200,0.1) inset;
+	overflow: hidden;
 }
 
+.hot_access .staffs .name
+{
+	display: block;
+	float: left;
+}
+.hot_access li
+{
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+}
 .hot_access li .buttons
 {
+	clear: right;
+	display: block;
 	margin-top: 8px;
 	float: right;
 }
-.hot_access li .buttons
+.hot_access li .buttons .button
 {
+	padding: 10px 14px 5px;
+}
+.hot_access li .buttons .button img
+{
+	max-width: 20px;
+	max-height: 20px;
+
 }

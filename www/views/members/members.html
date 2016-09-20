@@ -12,28 +12,59 @@
 	<!-- // toolbar -->
 
 
-	<div style="margin: 0;">
+	<div style="margin: 0;" ng-if="loggedin">
 		<img src="images/member/alex20-416.jpg" style="max-width:100%;">
 	</div>
 
-	<div class="contents" style="margin-top: 0;">
+	<!-- 未ログイン -->
+	<div class="contents" style="margin-top: 0;" ng-if="!loggedin">
+		<p>
+			会員専用コンテンツです。<br>
+			ご利用の際は、下記よりログイン<br>
+			もしくは、新規会員登録をお願い致します。
+		</p>
 
-		<h2>HOT ACCESS</h2>
-		<ul class="staffs">
-			<li ng-repeat="staff in ::staffs">
-				<span class="name">{{staff.name}}</span>
-				<span class="buttons">
-					<a class="button" href="tel:{{staff.telnum}}">TEL</a>
-					<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
-				</span>
-			</li>
-		</ul>
+		<h3>会員の方</h3>
+		<ons-button modifier="large" ng-click="navi.pushPage('views/auth/login.html')">ログイン</ons-button>
+		<h3>未会員の方</h3>
+		<ons-button modifier="large" ng-click="navi.pushPage('views/auth/signup.html')">会員登録</ons-button>
 
+	</div>
+	<!-- 未ログイン -->
+
+
+	<!-- ログイン済み -->
+	<div class="contents" style="margin-top: 0;" ng-if="loggedin">
+
+		<div class="hot_access">
+			<h2>HOT ACCESS</h2>
+			<ul class="staffs">
+				<li ng-repeat="staff in ::staffs">
+					<span class="name">{{staff.name}}</span>
+					<span class="buttons">
+						<a class="button" href="tel:{{staff.telnum}}">
+							<img src="images/icon/call_s.png" alt="TEL" />
+						</a>
+						<a class="button" href="mailto:{{staff.mail}}">
+							<img src="images/icon/mail_s.png" alt="メール" />
+						</a>
+						<a ng-if="staff.line" class="button" href="http://line.me/ti/p/~{{staff.line}}">
+							<img src="images/icon/line_s.png" alt="LINE" />
+						</a>
+					</span>
+				</li>
+			</ul>
+		</div>
+
+		<!--
 		<div>
 			<ul>
 				<li ng-click="navi.pushPage('views/members/hot_access.html')">HOT ACCESS</li>
 				<li ng-click="navi.pushPage()">OTHER</li>
 			</ul>
 		</div>
+		-->
 	</div>
+	<!-- //ログイン済み -->
+
 </ons-page>

@@ -9,6 +9,7 @@ const AJAX_LOGIN     = AJAX_BASE_URL + "login.json";     // ログイン
 const AJAX_LOGGEDIN  = AJAX_BASE_URL + "loggedin.json";  // ログインのチェック
 const AJAX_CHANGE_PW = AJAX_BASE_URL + "change_pw.json"; // パスワード変更
 const AJAX_MARKET    = AJAX_BASE_URL + "market.json";    // 貴金属相場
+const AJAX_CHART     = AJAX_BASE_URL + "chart.json";    // 貴金属相場
 const AJAX_NEWS      = AJAX_BASE_URL + "news.json";      // 新着情報
 const AJAX_PRODUCT   = AJAX_BASE_URL + "product.json";   // 商品情報
 const AJAX_LIKE      = AJAX_BASE_URL + "like.json";      // 「いいね」ボタン
@@ -57,8 +58,8 @@ const SHOP_INFO = {
 	telmarket    : '075-221-1059',
 	telmarketnum : '0752211059',
 	fax          : '075-211-0889',
-	lat          : '35.006096',
-	lng          : '135.7636673',
+	lat          : '35.0061',
+	lng          : '135.765856',
 	img          : 'images/shop.jpg',
 	mail         : 'alex@j-alex.com',
 	open         : '10:00 〜 18:00',
@@ -66,10 +67,11 @@ const SHOP_INFO = {
 };
 
 const STAFFS = [
-	{ name: 'JUNJI WADA', line: 'example', telnum: '0000000000', },
-	{ name: 'JUNJI WADA', line: 'example', telnum: '0000000000', },
-	{ name: 'JUNJI WADA', line: 'example', telnum: '0000000000', },
-	// { name: '', id: '', tel: '', telnum: '', }
+	{ name: '和田 淳司',   enmae: 'JUNJI   WADA',   telnum: '09032685077', mail: 'junji@j-alex.com'  , line: '19520731alex' },
+	{ name: '木村 隆史',   enmae: 'TAKASHI KIMURA', telnum: '08014095564', mail: 'takashi@j-alex.com', line: false     },
+	{ name: '田川 大介',   enmae: 'DAISUKE TAGAWA', telnum: '09098602444', mail: 'daisuke@j-alex.com', line: false     },
+	{ name: '和田 美代子', enmae: 'MIYOKO WADA',    telnum: '09043045379', mail: 'miyoko@j-alex.com' , line: false     },
+	{ name: '和田 康司',   enmae: 'KOJI WADA',      telnum: '08030232395', mail: 'koji@j-alex.com'   , line: false     },
 ];
 
 
@@ -113,7 +115,6 @@ app.controller('ShopController', function($scope, $http)
 {
 	$scope.shop_info = SHOP_INFO;
 	$scope.desc      = SHOP_INFO.description;
-	$scope.staffs    = STAFFS;
 
 	$scope.openBrowser = function(url)
 	{
@@ -162,6 +163,7 @@ var getUserData = function()
 app.controller('SpecialController', function($scope, SharedData, $sce)
 {
 	$scope.data = SharedData.get();
+	$scope.shop_info = SHOP_INFO;
 	$scope.article = $sce.trustAsHtml($scope.data.body);
 });
 
