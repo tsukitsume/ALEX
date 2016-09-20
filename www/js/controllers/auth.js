@@ -157,11 +157,11 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 	if (userData)
 	{
 		$scope.userData  = userData;
-		$scope.number    = localStorage.getItem(STORAGE_NUMBER);
-		$scope.point     = localStorage.getItem(STORAGE_POINT);
 		// $scope.qrcode         = true;
 	}
 
+	$scope.number    = localStorage.getItem(STORAGE_NUMBER);
+	$scope.point     = localStorage.getItem(STORAGE_POINT);
 
 	console.log($scope.loggedin.number);
 	console.log($scope.loggedin.onetime_key);
@@ -169,7 +169,7 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 	ons.ready(function()
 	{
 		$("#bcTarget").barcode(
-				$scope.number,
+				localStorage.getItem(STORAGE_NUMBER),
 				BARCODE_TYPE,
 				{
 					barWidth:  2,
