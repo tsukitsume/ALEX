@@ -133,6 +133,22 @@ app.controller('HistoryController', function($scope, SharedData)
 });
 
 
+/**
+ * ====================
+ * SpecialController
+ * ====================
+ */
+app.controller('SpecialController', function($scope, SharedData, $sce)
+{
+	$scope.data = SharedData.get();
+	$scope.shop_info = SHOP_INFO;
+	$scope.article = $sce.trustAsHtml($scope.data.body);
+});
+
+
+/**
+ * Utilities
+ */
 var isJson = function(arg){
     arg = (typeof(arg) == "function") ? arg() : arg;
     if(typeof(arg) != "string"){return false;}
@@ -154,18 +170,6 @@ var getUserData = function()
 	
 	return false;
 }
-
-/**
- * ====================
- * SpecialController
- * ====================
- */
-app.controller('SpecialController', function($scope, SharedData, $sce)
-{
-	$scope.data = SharedData.get();
-	$scope.shop_info = SHOP_INFO;
-	$scope.article = $sce.trustAsHtml($scope.data.body);
-});
 
 
 var isLoggedIn = function ()
