@@ -17,7 +17,6 @@ app.controller('AuthController', function($scope, $http, SharedData)
 app.controller('SignupController', function($scope, $http, SharedData)
 {
 	var userData = getUserData();
-	console.log(userData.birthday);
 	if (userData)
 	{
 		if (userData.birthday) userData.birthday = new Date(userData.birthday);
@@ -153,12 +152,7 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 		navi.popPage();
 	}
 
-	var userData = JSON.parse(localStorage.getItem(STORAGE_USER_DATA_KEY));
-	if (userData)
-	{
-		$scope.userData  = userData;
-		// $scope.qrcode         = true;
-	}
+	$scope.userData = JSON.parse(localStorage.getItem(STORAGE_USER_DATA_KEY));
 
 	$scope.number    = localStorage.getItem(STORAGE_NUMBER);
 	$scope.point     = localStorage.getItem(STORAGE_POINT);
