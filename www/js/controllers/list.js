@@ -292,6 +292,34 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 			}
 			for (key in response)
 			{
+				// 符号を設定
+				if (response[key].ratio_gold == 0) {
+					response[key].ratio_gold_sign = '±';
+				} else if (response[key].ratio_gold < 0) {
+					response[key].ratio_gold_sign = '－';
+				} else {
+					response[key].ratio_gold_sign = '＋';
+				}
+				if (response[key].ratio_platinum == 0) {
+					response[key].ratio_platinum_sign = '±';
+				} else if (response[key].ratio_platinum < 0) {
+					response[key].ratio_platinum_sign = '－';
+				} else {
+					response[key].ratio_platinum_sign = '＋';
+				}
+				if (response[key].ratio_silver == 0) {
+					response[key].ratio_silver_sign = '±';
+				} else if (response[key].ratio_silver < 0) {
+					response[key].ratio_silver_sign = '－';
+				} else {
+					response[key].ratio_silver_sign = '＋';
+				}
+				//　符号は設定したので、絶対値化する
+				response[key].ratio_gold     = Math.abs(response[key].ratio_gold);
+				response[key].ratio_platinum = Math.abs(response[key].ratio_platinum);
+				// 銀は小数を取るため符号の反転
+				if (response[key].ratio_silver < 0) response[key].ratio_silver = (response[key].ratio_silver) * -1.0;
+
 				$scope.dataList.push(response[key]);
 			}
 			$scope.$apply();

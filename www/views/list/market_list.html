@@ -40,7 +40,7 @@
 					<dt>販売価格<br>(前日比)</dt>
 					<dd>
 						{{data.price_gold |  currency:undefined:0}} /g<br>
-						({{data.ratio_gold |  currency:undefined:0}} /g)
+						(<span class="ratio_sign">{{data.ratio_gold_sign}}</span>{{data.ratio_gold | number: 0 }})
 					</dd>
 					<dt>買取価格</dt>
 					<dd>
@@ -53,7 +53,7 @@
 					<dt>販売価格<br>(前日比)</dt>
 					<dd>
 						{{data.price_platinum | currency:undefined:0}} /g<br>
-						({{data.ratio_platinum |  currency:undefined:0}} /g)
+						(<span class="ratio_sign">{{data.ratio_platinum_sign}}</span>{{data.ratio_platinum | number: 0 }})
 					</dd>
 					<dt>買取価格</dt>
 					<dd>
@@ -66,7 +66,7 @@
 					<dt>販売価格<br>(前日比)</dt>
 					<dd>
 						{{data.price_silver | currency}} /g<br>
-						({{data.ratio_silver | currency}} /g)
+						(<span class="ratio_sign">{{data.ratio_silver_sign}}</span>{{data.ratio_silver | number: 2 }})
 					</dd>
 					<dt>買取価格</dt>
 					<dd>

@@ -22,44 +22,44 @@
 			※販売者に買い取り価格(税込み価格 現物、現金取引 500g以上)
 		</p>
 		
-		<h2 class="gold">金</h2>
-		<dl>
-			<dt>販売価格<br>(前日比)</dt>
-			<dd>
-				{{data.price_gold | currency:undefined:0}} /g<br>
-				({{data.ratio_gold | currency:undefined:0}})
-			</dd>
-			<dt>買取価格</dt>
-			<dd>
-				{{data.purchase_gold | currency:undefined:0}} /g
-			</dd>
-		</dl>
-		
-		<h2 class="platinum">プラチナ</h2>
-		<dl>
-			<dt>販売価格<br>(前日比)</dt>
-			<dd>
-				{{data.price_platinum | currency:undefined:0}} /g<br>
-				({{data.ratio_platinum | currency:undefined:0}})
-			</dd>
-			<dt>買取価格</dt>
-			<dd>
-				{{data.purchase_platinum | currency}} /g
-			</dd>
-		</dl>
-		
-		<h2 class="silver">銀</h2>
-		<dl>
-			<dt>販売価格<br>(前日比)</dt>
-			<dd>
-				{{data.price_silver | currency}} /g<br>
-				({{data.ratio_silver | currency}})
-			</dd>
-			<dt>買取価格</dt>
-			<dd>
-				{{data.purchase_silver | currency}} /g
-			</dd>
-		</dl>
+				<h2 class="gold">金</h2>
+				<dl>
+					<dt>販売価格<br>(前日比)</dt>
+					<dd>
+						{{data.price_gold |  currency:undefined:0}} /g<br>
+						(<span class="ratio_sign">{{data.ratio_gold_sign}}</span>{{data.ratio_gold | number: 0 }})
+					</dd>
+					<dt>買取価格</dt>
+					<dd>
+						{{data.purchase_gold |  currency:undefined:0}} /g
+					</dd>
+				</dl>
+				
+				<h2 class="platinum">プラチナ</h2>
+				<dl>
+					<dt>販売価格<br>(前日比)</dt>
+					<dd>
+						{{data.price_platinum | currency:undefined:0}} /g<br>
+						(<span class="ratio_sign">{{data.ratio_platinum_sign}}</span>{{data.ratio_platinum | number: 0 }})
+					</dd>
+					<dt>買取価格</dt>
+					<dd>
+						{{data.purchase_platinum |  currency:undefined:0}} /g
+					</dd>
+				</dl>
+				
+				<h2 class="silver">銀&nbsp;(30kg単位)</h2>
+				<dl>
+					<dt>販売価格<br>(前日比)</dt>
+					<dd>
+						{{data.price_silver | currency}} /g<br>
+						(<span class="ratio_sign">{{data.ratio_silver_sign}}</span>{{data.ratio_silver | number: 2 }})
+					</dd>
+					<dt>買取価格</dt>
+					<dd>
+						{{data.purchase_silver | currency}} /g
+					</dd>
+				</dl>
 		
 		
 		<h2 class="">為替(インターバンク)</h2>
