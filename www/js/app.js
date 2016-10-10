@@ -168,6 +168,7 @@ var getUserData = function()
 		}
 	}
 	
+	console.log('user data false');
 	return false;
 }
 
