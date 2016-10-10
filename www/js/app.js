@@ -31,7 +31,7 @@ const MENUS = [
 	{ page: 'views/list/market_list.html',  name: 'Precious Metal Market', jpname: '貴金属相場', background: 'IMG_2012.JPG',   },
 	{ page: 'views/list/news_list.html',    name: 'Good News',             jpname: '行事予定',   background: 'IMG_0606.JPG',   },
 	{ page: 'views/list/product_list.html', name: 'New Arrival',           jpname: '新商品',       background: 'AX-2.png',   },
-	{ page: 'views/members/members.html',   name: 'Members Page',          jpname: '会員専用コンテンツ', background: 'images.jpeg',    },
+	{ page: 'views/members/members.html',   name: 'Members Page',          jpname: '会員専用ページ', background: 'images.jpeg',    },
 	{ page: 'views/auth/auth.html',         name: 'Be A Member',           jpname: '会員登録',           background: 'w-102.jpg',      },
 ];
 
@@ -41,7 +41,7 @@ const LOGGED_IN_MENUS = [
 	{ page: 'views/list/news_list.html',    name: 'Good News',             jpname: '行事予定',   background: 'IMG_0606.JPG',   },
 	{ page: 'views/list/product_list.html', name: 'New Arrival',           jpname: '商品',       background: 'Unknown.jpeg',   },
 	{ page: 'views/mypage.html',            name: 'Be A Member',           jpname: '会員登録',           background: 'w-102.jpg',      },
-	{ page: 'views/members/members.html',   name: 'Members Page',          jpname: '会員専用コンテンツ', background: 'images.jpeg',    },
+	{ page: 'views/members/members.html',   name: 'Members Page',          jpname: '会員専用ページ', background: 'images.jpeg',    },
 ];
 
 
@@ -68,7 +68,7 @@ const SHOP_INFO = {
 
 const STAFFS = [
 	{ name: '和田 淳司',   enmae: 'JUNJI   WADA',   telnum: '09032685077', mail: 'junji@j-alex.com'  , line: '19520731alex' },
-	{ name: '木村 隆史',   enmae: 'TAKASHI KIMURA', telnum: '08014095564', mail: 'takashi@j-alex.com', line: false     },
+	{ name: '木村 隆夫',   enmae: 'TAKAO KIMURA',   telnum: '08014095564', mail: 'takao@j-alex.com'  , line: false     },
 	{ name: '田川 大介',   enmae: 'DAISUKE TAGAWA', telnum: '09098602444', mail: 'daisuke@j-alex.com', line: false     },
 	{ name: '和田 美代子', enmae: 'MIYOKO WADA',    telnum: '09043045379', mail: 'miyoko@j-alex.com' , line: false     },
 	{ name: '和田 康司',   enmae: 'KOJI WADA',      telnum: '08030232395', mail: 'koji@j-alex.com'   , line: false     },
