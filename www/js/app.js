@@ -120,6 +120,9 @@ app.controller('ShopController', function($scope, $http)
 	{
 		window.open(url, '_system');
 	}
+
+	$scope.call = call;
+	$scope.mail = mail;
 });
 
 
@@ -171,6 +174,58 @@ var getUserData = function()
 	console.log('user data false');
 	return false;
 }
+
+var call = function(tel)
+{
+	if ( monaca.isAndroid )
+	{
+		window.plugins.webintent.startActivity(
+			{
+				action: window.plugins.webintent.ACTION_VIEW,
+				url: 'tel: phone_number=' + tel
+			},
+			function() {},
+			function() {alert('Failed to open URL via Android Intent')}
+		);
+		console.log('Android');
+	}
+	else
+	{
+		ons.notification.confirm({
+			title: tel,
+			messageHTML: "に電話をしもよろしいですか?",
+			callback: function(answer)
+			{
+				if (answer)
+				{
+					var ref = cordova.InAppBrowser.open('tel:'+tel, '_system');
+				}
+			},
+			buttonLabels: ['キャンセル', '発信']
+		});
+	}
+}
+
+var mail = function(address, subject, body)
+{
+	if ( monaca.isAndroid )
+	{
+		window.plugins.webintent.startActivity(
+			{
+				action: window.plugins.webintent.ACTION_VIEW,
+				url: 'mailto:' + address + '?subject=' + subject + '&body=' + body + ''
+			},
+			function() {},
+			function() {alert('Failed to open URL via Android Intent')}
+		);
+		console.log('Android');
+	}
+	else
+	{
+		var ref = cordova.InAppBrowser.open('mailto:' + address + '?subject=' + subject + '&body=' + body + '', '_system');
+	}
+}
+
 
 
 var isLoggedIn = function ()

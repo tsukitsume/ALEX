@@ -51,14 +51,14 @@
 		<dl>
 			<dt>TEL:</dt>
 				<dd>
-					<a href="tel:{{shop_info.telnum}}" ng-bind="::shop_info.tel">
+					<a href="#" ng-click="call(shop_info.telnum)" ng-bind="::shop_info.tel">
 					</a>
 				</dd>
 			<dt>FAX:</dt>
 				<dd ng-bind="::shop_info.fax"></dd>
 			<dt>MAIL:</dt>
 				<dd>
-					<a href="mailto:{{shop_info.mail}}" ng-bind="::shop_info.mail">
+					<a href="#" ng-click="mail(shop_info.mail, '店舗情報からお問い合わせ', '')" ng-bind="::shop_info.mail">
 					</a>
 				</dd>
 			<dt>HP:</dt>
