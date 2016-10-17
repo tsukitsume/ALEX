@@ -16,6 +16,10 @@ app.controller('AuthController', function($scope, $http, SharedData)
  */
 app.controller('SignupController', function($scope, $http, SharedData)
 {
+	$scope.call = call;
+	$scope.mail = mail;
+
+
 	var userData = getUserData();
 	if (userData)
 	{
@@ -47,7 +51,10 @@ app.controller('SignupController', function($scope, $http, SharedData)
 app.controller('SignupConfirmController', function($scope, $http, SharedData)
 {
 	$scope.data = SharedData.get();
-	
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	$scope.doSignUp = function()
 	{
 		modal.show();
@@ -146,7 +153,10 @@ app.controller('PasswordChangeController', function($scope, $http, SharedData)
 app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($scope, $http, SharedData)
 {
 	$scope.loggedin = isLoggedIn();
-	
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	if (!$scope.loggedin)
 	{
 		navi.popPage();
@@ -236,6 +246,10 @@ app.controller('MypageController', ['$scope', '$http', 'SharedData' , function($
 app.controller('LoginController', function($scope, $http, SharedData)
 {
 	$scope.shop_info = SHOP_INFO;
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	var userNumber = localStorage.getItem(STORAGE_NUMBER);
 	if (userNumber)
 	{

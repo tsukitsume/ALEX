@@ -146,6 +146,9 @@ app.controller('SpecialController', function($scope, SharedData, $sce)
 	$scope.data = SharedData.get();
 	$scope.shop_info = SHOP_INFO;
 	$scope.article = $sce.trustAsHtml($scope.data.body);
+
+	$scope.call = call;
+	$scope.mail = mail;
 });
 
 

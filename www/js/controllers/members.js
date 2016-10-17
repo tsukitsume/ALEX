@@ -10,7 +10,10 @@ const MEMBERS_MENUS = [
 app.controller('MembersController', function($scope, $http, SharedData)
 {
 	$scope.loggedin = isLoggedIn();
-	
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	$scope.staffs = STAFFS;
 	/*
 	if (!$scope.loggedin)
@@ -33,7 +36,10 @@ app.controller('MembersController', function($scope, $http, SharedData)
 app.controller('HotAccessController', function($scope, $http, SharedData)
 {
 	$scope.loggedin = isLoggedIn();
-	
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	if (!$scope.loggedin)
 	{
 		navi.popPage();

@@ -7,6 +7,10 @@ app.controller('NewsListController', function($scope, $sce, $http, SharedData)
 {
 	$scope.dataList = [];
 	$scope.shop_info = SHOP_INFO;
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	var loading = false;
 	var all_data_loaded = false;
 
@@ -94,6 +98,9 @@ app.controller('NewsController', function($scope, $sce, SharedData)
 	$scope.shop_info = SHOP_INFO;
 	$scope.data = SharedData.get();
 
+	$scope.call = call;
+	$scope.mail = mail;
+
 	$scope.article = $sce.trustAsHtml($scope.data.body);
 });
 
@@ -179,13 +186,17 @@ app.controller('ProductListController', function($scope, $http, SharedData)
  * Product
  * ====================
  */
-app.controller('ProductController', function($scope, SharedData) {
+app.controller('ProductController', function($scope, SharedData)
+{
 	$scope.data = SharedData.get();
 	$scope.BASE_URL = BASE_URL;
 	$scope.shop_info = SHOP_INFO;
-	
+
 	$scope.loggedin = isLoggedIn();
-	
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 	$scope.like = function(id)
 	{
 		$scope.modal.show();
@@ -256,6 +267,10 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 {
 	$scope.shop_info = SHOP_INFO;
 	$scope.dataList = [];
+
+	$scope.call = call;
+	$scope.mail = mail;
+
 
 	var first_element = true;
 	

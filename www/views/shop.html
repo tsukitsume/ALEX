@@ -35,13 +35,13 @@
 				</a>
 			</li>
 			<li>
-				<a class="button icon" href="tel:{{shop_info.telnum}}">
+				<a class="button icon" href="#" ng-click="call(shop_info.telnum)">
 					<img src="images/icon/call_s.png" alt="電話を掛ける" />
 					<span>CALL</span>
 				</a>
 			</li>
 			<li>
-				<a class="button icon" href="mailto:{{shop_info.mail}}">
+				<a class="button icon" href="#" ng-click="mail(shop_info.mail, 'ALEXアプリからお問い合わせ', '')">
 					<img src="images/icon/mail_s.png" alt="メール" />
 					<span>MAIL</span>
 				</a>
@@ -58,7 +58,7 @@
 				<dd ng-bind="::shop_info.fax"></dd>
 			<dt>MAIL:</dt>
 				<dd>
-					<a href="#" ng-click="mail(shop_info.mail, '店舗情報からお問い合わせ', '')" ng-bind="::shop_info.mail">
+					<a href="#" ng-click="mail(shop_info.mail, 'ALEXアプリからお問い合わせ', '')" ng-bind="::shop_info.mail">
 					</a>
 				</dd>
 			<dt>HP:</dt>

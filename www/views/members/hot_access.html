@@ -17,7 +17,7 @@
 			<li ng-repeat="staff in ::staffs">
 				<span class="name">{{staff.name}}</span>
 				<span class="buttons">
-					<a class="button" href="tel:{{staff.telnum}}">TEL</a>
+					<a class="button" href="#" ng-click="call(shop_info.telnum)">TEL</a>
 					<a class="button" href="http://line.me/ti/p/{{staff.line}}">LINE</a>
 				</span>
 			</li>
