@@ -67,11 +67,11 @@ const SHOP_INFO = {
 };
 
 const STAFFS = [
-	{ name: '和田 淳司',   enmae: 'JUNJI   WADA',   telnum: '09032685077', mail: 'junji@j-alex.com'  , line: '19520731alex' },
-	{ name: '木村 隆夫',   enmae: 'TAKAO KIMURA',   telnum: '08014095564', mail: 'takao@j-alex.com'  , line: false     },
-	{ name: '田川 大介',   enmae: 'DAISUKE TAGAWA', telnum: '09098602444', mail: 'daisuke@j-alex.com', line: false     },
-	{ name: '和田 美代子', enmae: 'MIYOKO WADA',    telnum: '09043045379', mail: 'miyoko@j-alex.com' , line: false     },
-	{ name: '和田 康司',   enmae: 'KOJI WADA',      telnum: '08030232395', mail: 'koji@j-alex.com'   , line: false     },
+	{ name: '和田 淳司',   enmae: 'JUNJI   WADA',   telnum: '090 3268 5077', mail: 'junji@j-alex.com'  , line: '19520731alex' },
+	{ name: '木村 隆夫',   enmae: 'TAKAO KIMURA',   telnum: '080 1409 5564', mail: 'takao@j-alex.com'  , line: false     },
+	{ name: '田川 大介',   enmae: 'DAISUKE TAGAWA', telnum: '090 9860 2444', mail: 'daisuke@j-alex.com', line: false     },
+	{ name: '和田 美代子', enmae: 'MIYOKO WADA',    telnum: '090 4304 5379', mail: 'miyoko@j-alex.com' , line: false     },
+	{ name: '和田 康司',   enmae: 'KOJI WADA',      telnum: '080 3023 2395', mail: 'koji@j-alex.com'   , line: false     },
 ];
 
 
@@ -185,7 +185,7 @@ var call = function(tel)
 		window.plugins.webintent.startActivity(
 			{
 				action: window.plugins.webintent.ACTION_VIEW,
-				url: 'tel: phone_number=' + tel
+				url: 'tel: ' + tel
 			},
 			function() {},
 			function() {alert('Failed to open URL via Android Intent')}
