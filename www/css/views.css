@@ -99,6 +99,7 @@
 .market_list .buttons .button.gold     { background: #FFD700; border-color: #ccc;}
 .market_list .buttons .button.platinum { background: #e5e4e2; border-color: #ccc; color: #666; }
 .market_list .buttons .button.silver   { background: #c0c0c0; border-color: #ccc; }
+.market_list .buttons .button.exchange { background: #00c0c0; border-color: #0cc; }
 
 .market_list h3
 {

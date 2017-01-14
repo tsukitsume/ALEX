@@ -353,8 +353,10 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 
 
 	var myLineChart = null;
+	var myLineChartBottom = null;
 	var chartDatas;
 	var chartConfigs;
+	var chartConfigsBottom;
 
 	$scope.getChart = function()
 	{
@@ -372,12 +374,14 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 			var golds      = [];
 			var platinums  = [];
 			var silvers    = [];
+			var exchanges  = [];
 			for (key in response)
 			{
 				labels.push(response[key].date);
 				golds.push(response[key].gold);
 				platinums.push(response[key].platinum);
 				silvers.push(response[key].silver);
+				exchanges.push(response[key].exchange);
 			}
 
 			chartDatas = {
@@ -408,6 +412,15 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 					lineTension: 0,
 					borderWidth: 1,
 				},
+				exchange: {
+					label: '為替',
+					backgroundColor:   "rgba(0, 192, 192, 0.2)",
+					borderColor:       "rgba(0, 152, 152, 1)",
+					data: exchanges,
+					pointRadius: 0,
+					lineTension: 0,
+					borderWidth: 1,
+				},
 			};
 
 			chartConfigs = {
@@ -417,6 +430,18 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 						chartDatas.gold,
 						chartDatas.platinum,
 						chartDatas.silver,
+						chartDatas.exchange,
+					]
+				},
+				options: {
+				},
+			};
+			chartConfigsBottom = {
+				data: {
+					labels: labels,
+					datasets: [
+						chartDatas.silver,
+						chartDatas.exchange,
 					]
 				},
 				options: {
@@ -446,25 +471,35 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 		switch (type)
 		{
 			case 'gold':
+				$('#myChartBottom').slideUp();
 				chartConfigs.data.datasets = [
 					chartDatas.gold,
 				];
 				break;
 			case 'platinum':
+				$('#myChartBottom').slideUp();
 				chartConfigs.data.datasets = [
 					chartDatas.platinum,
 				];
 				break;
 			case 'shilver':
+				$('#myChartBottom').slideUp();
 				chartConfigs.data.datasets = [
 					chartDatas.silver,
 				];
 				break;
+			case 'exchange':
+				$('#myChartBottom').slideUp();
+				chartConfigs.data.datasets = [
+					chartDatas.exchange,
+				];
+				break;
 			default:
+				$('#myChartBottom').slideDown();
 				chartConfigs.data.datasets = [
 					chartDatas.gold,
 					chartDatas.platinum,
-					chartDatas.silver,
+					// chartDatas.silver,
 				];
 				break;
 		}
@@ -476,6 +511,7 @@ app.controller('MarketListController', function($scope, $http, SharedData)
 		else
 		{
 			myLineChart = Chart.Line(document.getElementById("myChart").getContext("2d"), chartConfigs);
+			myLineChartBottom = Chart.Line(document.getElementById("myChartBottom").getContext("2d"), chartConfigsBottom);
 		}
 	}
 

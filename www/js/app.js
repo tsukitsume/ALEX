@@ -1,7 +1,15 @@
 var app = ons.bootstrap('myApp', [ 'ngSanitize' ]);
 
+/*
+// production
 const BASE_URL      = "http://alexkyoto.sakura.ne.jp/system/";
 const SECURE_URL    = "https://alexkyoto.sakura.ne.jp/system/";
+*/
+
+// staging
+const BASE_URL      = "http://alex.tsukitsume.com/";
+const SECURE_URL    = "http://alex.tsukitsume.com/";
+
 const AJAX_BASE_URL = SECURE_URL + "rest/app/";
 
 const AJAX_SIGNUP    = AJAX_BASE_URL + "signup.json";    // サインアップ
@@ -15,6 +23,7 @@ const AJAX_PRODUCT   = AJAX_BASE_URL + "product.json";   // 商品情報
 const AJAX_LIKE      = AJAX_BASE_URL + "like.json";      // 「いいね」ボタン
 const AJAX_QR        = AJAX_BASE_URL + "qr.json";        // QRコード
 const AJAX_SPECIAL   = AJAX_BASE_URL + "special.json";   // スペシャルコンテンツ
+const AJAX_BLOG      = AJAX_BASE_URL + "blog.json";      // ブログ
 
 const IMG_DIR        = BASE_URL + "images";
 
@@ -163,7 +172,6 @@ var isJson = function(arg){
 
 var getUserData = function()
 {
-	console.log('getUserData');
 	var store = localStorage.getItem(STORAGE_USER_DATA_KEY);
 	if (store && isJson(store))
 	{
@@ -174,7 +182,6 @@ var getUserData = function()
 		}
 	}
 	
-	console.log('user data false');
 	return false;
 }
 
@@ -190,7 +197,6 @@ var call = function(tel)
 			function() {},
 			function() {alert('Failed to open URL via Android Intent')}
 		);
-		console.log('Android');
 	}
 	else
 	{
@@ -221,11 +227,30 @@ var mail = function(address, subject, body)
 			function() {},
 			function() {alert('Failed to open URL via Android Intent')}
 		);
-		console.log('Android');
 	}
 	else
 	{
 		var ref = cordova.InAppBrowser.open('mailto:' + address + '?subject=' + subject + '&body=' + body + '', '_system');
+	}
+}
+
+var line = function(account)
+{
+	console.log('line');
+	if ( monaca.isAndroid )
+	{
+		window.plugins.webintent.startActivity(
+			{
+				action: window.plugins.webintent.ACTION_VIEW,
+				url: 'http://line.me/ti/p/~' + account
+			},
+			function() {},
+			function() {alert('Failed to open URL via Android Intent')}
+		);
+	}
+	else
+	{
+		var ref = cordova.InAppBrowser.open('http://line.me/ti/p/~' + account, '_system');
 	}
 }
 

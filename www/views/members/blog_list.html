@@ -1,0 +1,65 @@
+<ons-page ng-controller="BlogListController" id="blogList" style="height:100%;" class="blog_list" >
+
+	<!-- toolbar -->
+	<ons-toolbar>
+		<div class="left" ng-cloak>
+			<ons-toolbar-button ng-click="navi.popPage()">
+				&times;
+			</ons-toolbar-button>
+		</div>
+
+		<div class="center">行事予定</div>
+	</ons-toolbar>
+	<!-- // toolbar -->
+
+	<ons-list id="blog_list_ul">
+
+		<!-- first -->
+		<ons-list-item ng-if="$first"
+			ng-repeat="data in dataList"
+			modifier="tappable" class="blog_list list__item__line-height"
+			>
+				<div class="blog">
+					<h1 class="">
+						{{data.title}}
+					</h1>
+
+					<article class="blog_article" ng-bind-html="article">
+					</article>
+				</div>
+
+				<h3 style="margin-top:4em; max-width:100%; fontweight:bold; text-align: center; color: #fff; borde-radius: 10px; background-color: #c20d00;">
+					▼&nbsp;過去の情報&nbsp;▼
+				</h3>
+
+		</ons-list-item>
+
+		<ons-list-item
+			class="blog_list list__item__line-height"
+			ng-if="!$first"
+   			ng-repeat="data in dataList"
+			modifier="tappable"
+			ng-click="showDetailPage(data)"
+			>
+			<h3>
+				<ons-icon icon="ion-android-arrow-dropright-circle" style="color: #c20d00;" aria-hidden="true"></ons-icon>&nbsp;
+				{{data.title}}
+			</h3>
+		</ons-list-item>
+		
+		<!-- #list_end -->
+		<div id="list_end">
+			<div class="loading">
+				<img src="images/loader.gif" alt="Loading..." /><br>
+				読み込み中...
+			</div>
+			<div class="load_more">
+				さらに読み込む。<br>
+				<span class="swipe">▲上にスワイプ▲</span>
+			</div>
+		</div>
+		<!-- // #list_end -->
+
+	</ons-list>
+   
+</ons-page>

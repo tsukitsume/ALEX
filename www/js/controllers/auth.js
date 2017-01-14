@@ -73,8 +73,8 @@ app.controller('SignupConfirmController', function($scope, $http, SharedData)
 		})
 		.fail(function (qxhr, status, error)
 		{
-			console.log(qxhr);
-			console.log(error);	
+			// console.log(qxhr);
+			// console.log(error);	
 		})
 		.always(function ()
 		{
@@ -98,11 +98,9 @@ app.controller('PasswordChangeController', function($scope, $http, SharedData)
 		modal.show();
 		data.number = $scope.number;
 
-		console.log(data);
 		$.post(AJAX_CHANGE_PW, data)
 		.done(function (response)
 		{
-			console.log(response);
 
 			if (response == 'differ_old_password')
 			{
@@ -134,8 +132,6 @@ app.controller('PasswordChangeController', function($scope, $http, SharedData)
 		})
 		.fail(function (qxhr, status, error)
 		{
-			console.log(qxhr);
-			console.log(error);
 		})
 		.always(function ()
 		{

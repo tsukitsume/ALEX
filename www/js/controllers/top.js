@@ -16,7 +16,6 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 	$.post(AJAX_SPECIAL, {})
 	.done(function (response)
 	{
-		console.log(response);
 		if (response)
 		{
 			$scope.special = response;
@@ -32,7 +31,6 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 
 	$scope.pushSpecialPage = function(data)
 	{
-		console.log('special');
 		SharedData.set(data);
 		navi.pushPage('views/special.html');
 	}
@@ -40,7 +38,6 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 
 	ons.ready(function()
 	{
-		console.log('top');
 		var BAN_HEIGHT = $('#special').height();
 
 		if ($scope.loggedin)
@@ -70,19 +67,15 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 			var interval = null;
 
 			$('#menu_sub li').off();
-			console.log(typeof $('#menu_sub li').on);
 			$('#menu_sub li').on('click', function(e)
 			{
-				console.log('click');
 				if (interval) clearInterval(interval);
 				// scrollTo = $('#menu_sub').scrollTop() + $(e.target).offset().top - $('#menu_sub').offset().top + LI_HEIGHT;
 				scrollTo = $(e.target).offset().top - $('#menu_sub').offset().top + LI_HEIGHT;
 
-				console.log(scrollTo);
 
 				interval = setInterval(function()
 				{
-					console.log(scrollTo);
 					scrollTo-=10;
 					slideY+=10;
 					move();
@@ -102,7 +95,6 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 				/* フリック開始時 */
 				'touchstart': function(e)
 				{
-					console.log('touchstart');
 					clearInterval(interval);
 					touchY = event.changedTouches[0].pageY;
 					slideY = $('#menu_sub').scrollTop();
@@ -158,7 +150,6 @@ app.controller('TopController', function($scope, $http, SharedData, $timeout)
 
 			function move()
 			{
-				console.log(slideY);
 					if (slideY > LI_HEIGHT*2)
 					{
 						$('#menu_sub li:last-child').after($('#menu_sub li:first-child'));

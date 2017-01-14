@@ -36,6 +36,7 @@
 	<!-- ログイン済み -->
 	<div class="contents" style="margin-top: 0;" ng-if="loggedin">
 
+
 		<div class="hot_access">
 			<h2>HOT ACCESS</h2>
 			<ul class="staffs">
@@ -48,13 +49,16 @@
 						<a class="button" href="#" ng-click="mail(staff.mail, '', '')">
 							<img src="images/icon/mail_s.png" alt="メール" />
 						</a>
-						<a ng-if="staff.line" class="button" href="http://line.me/ti/p/~{{staff.line}}">
+						<a ng-if="staff.line" class="button" href="#" ng-click="line(staff.line)">
 							<img src="images/icon/line_s.png" alt="LINE" />
 						</a>
 					</span>
 				</li>
 			</ul>
 		</div>
+
+		<ons-button modifier="large" ng-click="navi.pushPage('views/members/blog_list.html')">ブログ</ons-button>
+
 
 		<!--
 		<div>
